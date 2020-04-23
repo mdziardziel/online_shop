@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+to generate active admin panel for MyModelName
+```
+rails generate active_admin:resource [MyModelName] 
+```
 
-Things you may want to cover:
+admin panel path
+```
+/admin
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+default admin login/password
+```
+User: admin@example.com
+Password: password
+```
