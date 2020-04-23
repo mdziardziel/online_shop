@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-
 <table>
   <thead>
     <tr>
@@ -21,7 +20,7 @@
         <td><%= product.quantity %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>
-        <td><%= button_to 'Add to cart', cart_add_product_path(product_id: product.id) %> </td>
+        <td><%= link_to 'Add to cart', '#', onclick: "addProductToCart(#{product.id})" %> </td>
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +28,5 @@
 
 <br>
 
+<div id='cart_min'></div>
+<%= link_to 'clear cart', '#', onclick: "clearCart()" %>
