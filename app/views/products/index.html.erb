@@ -6,12 +6,10 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Description</th>
       <th>Category</th>
-      <th>Picture</th>
       <th>Quantity</th>
       <th>Price</th>
-      <th colspan="1"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -19,12 +17,11 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.description %></td>
         <td><%= product.category %></td>
-        <td><%= product.picture %></td>
         <td><%= product.quantity %></td>
         <td><%= product.price %></td>
         <td><%= link_to 'Show', product %></td>
+        <td><%= button_to 'Add to cart', cart_add_product_path(product_id: product.id) %> </td>
       </tr>
     <% end %>
   </tbody>
