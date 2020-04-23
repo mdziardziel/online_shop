@@ -10,6 +10,40 @@
   </head>
 
   <body>
+
+<nav class="navbar fixed-top navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Fixed top</a>
+  <div id='cart_min'></div>
+<%= link_to 'clear cart', '#', onclick: "clearCart()" %>
+</nav> <br> <br> <br>
+
+
+  <div class="row ">
+    <div class="" style='background-color: black; margin-top: -15px; height: 100%'>
+      <ul class="nav flex-column fixed-top" style='width: 300px;background-color: black; height: 100%; margin-top: 55px;'>
+        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+        <li class="nav-item">
+          <%= link_to 'All', products_path, class: 'nav-link' %>
+        </li>
+        <% categories.each do |category|%>
+        <li class="nav-item">
+          <%= link_to category, products_path(category: category), class: 'nav-link' %>
+        </li>
+
+        <%end%>
+      </ul>
+    </div>
+    <div class=""  style='margin-left: 320px'>
+        <div class=''>
     <%= yield %>
+    </div>
+    </div>
+  </div>
+
+
   </body>
 </html>
