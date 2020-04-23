@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: online_shop
+  password: <%= ENV['ONLINE_SHOP_DATABASE_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -81,5 +83,3 @@ test:
 production:
   <<: *default
   database: online_shop_production
-  username: online_shop
-  password: <%= ENV['ONLINE_SHOP_DATABASE_PASSWORD'] %>
