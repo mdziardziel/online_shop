@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  picture: MyString
+  quantity: 1
+  discarded_at: 2020-04-23 18:08:19
+  price: 9.99
+
+two:
+  name: MyString
+  description: MyText
+  picture: MyString
+  quantity: 1
+  discarded_at: 2020-04-23 18:08:19
+  price: 9.99
