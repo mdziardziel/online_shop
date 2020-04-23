@@ -5,5 +5,6 @@ FactoryBot.define do
     picture { Faker::Avatar.image(size: Product::PICTURE_SIZE) }
     quantity { Faker::Number.positive.to_i }
     price { Faker::Commerce.price }
+    category { Faker::Commerce.department }
   end
 end

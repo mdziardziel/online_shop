@@ -7,6 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.integer :quantity
       t.datetime :discarded_at
       t.decimal :price
+      t.string :category
 
       t.timestamps
     end
