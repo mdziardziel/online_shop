@@ -4,7 +4,7 @@
 <div class="card-columns">
   <% @products.each do |product| %>
     <div class="card">
-      <img class="card-img-top" src=<%= product.picture_url %> alt="Card image cap">
+      <img class="card-img-top" style='max-width: 225px' src=<%= product.picture_url %> alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= product.name %></h5>
         <p class="card-text"><%= product.category %> <%= product.quantity %> <%= product.price %></p>
