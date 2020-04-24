@@ -13,6 +13,7 @@
 
 <nav class="navbar fixed-top navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Fixed top</a>
+  <%= link_to 'Cart', carts_path, class: 'nav-link' %>
   <div id='cart_min'></div>
 <%= link_to 'clear cart', '#', onclick: "clearCart()" %>
 </nav> <br> <br> <br>

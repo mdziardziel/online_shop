@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_with(url: '', method: :post) do %>
+  <h1>Cart  <span>  <%= submit_tag "Order", class: 'btn btn-secondary' %></span> </h1>
+
+  <div class="card-columns">
+    <% @cart.each do |product, quantity| %>
+      <div id='cart-product' class="card">
+        <img class="card-img-top" style='max-width: 225px' src=<%= product.picture_url %> alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.category %></p>
+          <label>Items available  </label>
+          <%= product.quantity %> <br>
+          <label>Unit price  </label>
+          <%= product.price %></p>
+
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <%= link_to '-', '#s', onclick: "decrementProductFromCart(#{product.id})", class: 'btn btn-outline-secondary' %>
+            </div>
+            <%= text_field_tag product.id, quantity, disabled: true, class: 'form-control', id: "product-#{product.id}-quantity" %>
+            <div class="input-group-append">
+              <%= link_to '+', '#s', onclick: "incrementProductToCart(#{product.id})", class: 'btn btn-outline-secondary' %>
+            </div>
+          </div>
+
+          <br>
+            <%= link_to 'Show', product, class: 'btn btn-primary' %>
+            <%= link_to 'Remove', '#s', onclick: "removeProductFromCart(#{product.id}, this)", class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
