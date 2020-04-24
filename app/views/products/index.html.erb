@@ -1,32 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.category %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Add to cart', '#', onclick: "addProductToCart(#{product.id})" %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<div id='cart_min'></div>
-<%= link_to 'clear cart', '#', onclick: "clearCart()" %>
+<div class="card-columns">
+  <% @products.each do |product| %>
+    <div class="card">
+      <img class="card-img-top" style='max-width: 225px' src=<%= product.picture_url %> alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name %></h5>
+        <p class="card-text"><%= product.category %> <%= product.quantity %> <%= product.price %></p>
+          <%= link_to 'Show', product, class: 'btn btn-primary' %>
+          <%= link_to 'Add to cart', '#s', onclick: "addProductToCart(#{product.id})", class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
