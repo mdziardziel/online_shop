@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_with(url: '', method: "get") do %>
+<h1>Cart  <span>  <%= submit_tag "Order", class: 'btn btn-secondary' %></span> </h1>
+
+  <div class="card-columns">
+    <% @cart.each do |product, quantity| %>
+      <div class="card">
+        <img class="card-img-top" style='max-width: 225px' src=<%= product.picture_url %> alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"><%= product.category %></p>
+          <label>Items available  </label>
+          <%= product.quantity %> <br>
+          <label>Unit price  </label>
+          <%= product.price %></p>
+          <label for="customRange3">Items in cart</label><br>
+          <%= number_field_tag product.id, quantity, min: 0, max: product.quantity, class: 'form-control', id: 'customRange3' %>
+          <br><br>
+            <%= link_to 'Show', product, class: 'btn btn-primary' %>
+            <%= link_to 'Remove', product, class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

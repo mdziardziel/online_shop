@@ -1,15 +1,13 @@
-class CartsController < ActionController::API 
-  include ActionController::Cookies
-
-  def add_product
-    cart = cookies['cart'].present? ? JSON.parse(cookies['cart']) : {}
-    cart[product_id] = cart[product_id].to_i + 1
-    cookies['cart'] = cart.to_json
+class CartsController < ApplicationController
+  MAXIMUM_PRODUCTS_PER_ORDER = 15
+  def index
+    cart
   end
 
   private
 
-  def product_id
-    params[:product_id]
+  def cart
+    cart_hash = JSON.parse(cookies['cart'] || '{}')
+    @cart ||= cart_hash.map { |id, quantity| [Product.find(id), quantity] }
   end
 end
