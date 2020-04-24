@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_with(url: '', method: :post) do %>
+<%= form_with(url: orders_path, method: :post) do %>
   <h1>Cart  <span>  <%= submit_tag "Order", class: 'btn btn-secondary' %></span> </h1>
 
   <div class="card-columns">
@@ -20,7 +20,7 @@
             <div class="input-group-prepend">
               <%= link_to '-', '#s', onclick: "decrementProductFromCart(#{product.id})", class: 'btn btn-outline-secondary' %>
             </div>
-            <%= text_field_tag product.id, quantity, disabled: true, class: 'form-control', id: "product-#{product.id}-quantity" %>
+            <%= text_field_tag "products[#{product.id}]", quantity, class: 'form-control', id: "product-#{product.id}-quantity" %>
             <div class="input-group-append">
               <%= link_to '+', '#s', onclick: "incrementProductToCart(#{product.id})", class: 'btn btn-outline-secondary' %>
             </div>
