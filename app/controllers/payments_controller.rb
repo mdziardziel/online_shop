@@ -29,9 +29,9 @@ class PaymentsController < ApplicationController
     payu_status = params[:order][:status]
     order_id = params[:order][:order_id]
     status = ::Payu::PaymentStatus.convert(payu_status)
-    # puts payu_status
-    # puts order_id
-    # puts status
+    puts payu_status
+    puts order_id
+    puts status
     Payment.where("provider_data->>'order_id' = ?", order_id).first.update!(status: status)
 
     head :ok
