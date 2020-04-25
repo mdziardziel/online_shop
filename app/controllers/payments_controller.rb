@@ -1,6 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_payment, only: [:show]
-  skip_before_filter :verify_authenticity_token, only: %i(provider_notify)
+  skip_before_action :verify_authenticity_token, only: %i(provider_notify)
 
   def new
     @order = Order.find_by(token: params[:order_token])
