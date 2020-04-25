@@ -1,4 +1,21 @@
+
+$primary: (
+  color: #3700B3,
+  dark:  black,
+  light: rgb(194, 164, 236)
+);
+
+
+$secondary: (
+  color: #03DAC6,
+  dark:  #018786,
+  light: rgb(161, 216, 210)
+);
+
+$body-bg: #121212;
+
 @import "material";
+@import "material_icons";
 
 
 .card-columns {
@@ -19,3 +36,44 @@
   }
 }
 
+
+.left-menu {
+  background-color: black; 
+  width: 300px;
+  height: 100%;
+  // margin-top: 55px;
+  overflow: scroll;
+  position: fixed;
+  top: 73px;
+  left: 0;
+}
+
+.card {
+  background-color: #212121;
+  color: white
+}
+
+body {
+  color: white;
+}
+
+#cart_min {
+  font-family: 'Aclonica';
+  line-height: 10%;
+  font-size: 30px; 
+  color: #03DAC6;
+  margin-right: -5px;
+}
+
+.navbar {
+  padding-right: 50px;
+}
+
+label {
+  color: lightgrey;
+}
+
+input[type=text] {
+  color: #03DAC6!important;
+  text-align: center; 
+}

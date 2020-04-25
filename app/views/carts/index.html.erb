@@ -1,8 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <%= form_with(url: orders_path, method: :post) do %>
-  <h1>Cart  <span>  <%= submit_tag "Order", class: 'btn btn-secondary' %></span> </h1>
+  <h1>Cart </h1>
+<br>
+  <h2>Summary  </h2>
 
+<div class="card">
+  <div class="card-body">
+    <p class="card-text">
+      <label>Amount  </label> <%= @cart.map { |product, quantity| product.price * quantity }.reduce(:+) %> <br>
+      <label>Items  </label> <%= @cart.to_h.values.reduce(:+) %>
+    </p>
+    <div class="btn-group" role="group" aria-label="Basic example">
+       <%= submit_tag "Order", class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+
+<br><br>
+  <h2>Detailed  </h2>
   <div class="card-columns">
     <% @cart.each do |product, quantity| %>
       <div id='cart-product' class="card">
@@ -18,11 +34,11 @@
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <%= link_to '-', '#s', onclick: "decrementProductFromCart(#{product.id})", class: 'btn btn-outline-secondary' %>
+              <%= link_to material_icon.remove_circle.md_36, '#s', onclick: "decrementProductFromCart(#{product.id})", class: 'btn btn-outline-secondary' %>
             </div>
             <%= text_field_tag "products[#{product.id}]", quantity, class: 'form-control', id: "product-#{product.id}-quantity" %>
             <div class="input-group-append">
-              <%= link_to '+', '#s', onclick: "incrementProductToCart(#{product.id})", class: 'btn btn-outline-secondary' %>
+              <%= link_to material_icon.add_circle.md_36, '#s', onclick: "incrementProductToCart(#{product.id})", class: 'btn btn-outline-secondary' %>
             </div>
           </div>
 

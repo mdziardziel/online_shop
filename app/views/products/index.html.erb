@@ -4,12 +4,14 @@
 <div class="card-columns">
   <% @products.each do |product| %>
     <div class="card">
-      <img class="card-img-top" style='max-width: 225px' src=<%= product.picture_url %> alt="Card image cap">
+      <%= image_tag product.picture_url, style: 'width: 225px; height: 225px;', class: "card-img-top" %>
       <div class="card-body">
         <h5 class="card-title"><%= product.name %></h5>
-        <p class="card-text"><%= product.category %> <%= product.quantity %> <%= product.price %></p>
-          <%= link_to 'Show', product, class: 'btn btn-primary' %>
-          <%= link_to 'Add to cart', '#s', onclick: "addProductToCart(#{product.id})", class: 'btn btn-secondary' %>
+        <p><%= product.category %></p>
+        <label>Quantity:</label> <%= product.quantity %><br>
+        <label>Price:</label> <%= product.price %><br> <br>
+        <%= link_to 'Show', product, class: 'btn btn-primary' %>
+        <%= link_to 'Add to cart', '#',  onclick: "addProductToCart(#{product.id})", class: 'btn btn-secondary' %>
       </div>
     </div>
   <% end %>
