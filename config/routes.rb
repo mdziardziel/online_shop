@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :products, only: %i(show index)
   resources :carts, only: %i(index)
+  resources :orders, only: %i(show create)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

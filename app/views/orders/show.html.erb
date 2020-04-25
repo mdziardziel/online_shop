@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+  <h1>Order  </h1>
+<br>
+  <h2>Summary  </h2>
+
+<div class="card">
+  <div class="card-body">
+    <p class="card-text">
+      <label>Amount  </label> <%= @order.amount %> <br>
+      <label>Status  </label> <%= @order.status %>
+    </p>
+    <%= form_with(url: '', method: :get) do %>
+       <%= submit_tag "Pay", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<br><br>
+  <h2>Detailed  </h2>
+<div class="card-columns">
+  <% @order.products_orders.each do |product_order| %>
+    <div id='cart-product' class="card">
+      <img class="card-img-top" style='max-width: 225px' src=<%= product_order.product.picture_url %> alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= product_order.product.name %></h5>
+        <p class="card-text"><%= product_order.product.category %></p>
+        <label>Ordered items  </label>
+        <%= product_order.quantity %> <br>
+        <label>Amount  </label>
+        <%= product_order.amount %></p>
+
+
+        <br>
+          <%= link_to 'Show', product_order.product, class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</div>
