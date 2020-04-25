@@ -51,7 +51,8 @@ ActiveRecord::Schema.define(version: 2020_04_25_122951) do
 
   create_table "payments", force: :cascade do |t|
     t.bigint "order_id"
-    t.jsonb "buyer"
+    t.jsonb "buyer", default: {}
+    t.jsonb "provider_data", default: {}
     t.string "status"
     t.decimal "amount"
     t.datetime "created_at", null: false
