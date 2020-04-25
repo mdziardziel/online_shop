@@ -29,6 +29,9 @@ class PaymentsController < ApplicationController
     payu_status = params[:order][:status]
     order_id = params[:order][:order_id]
     status = ::Payu::PaymentStatus.convert(payu_status)
+    # puts payu_status
+    # puts order_id
+    # puts status
     Payment.where("provider_data->>'order_id' = ?", order_id).first.update!(status: status)
 
     head :ok
@@ -51,6 +54,10 @@ class PaymentsController < ApplicationController
     def process_payment
       if payu_payment.response.success?
         @redirect_url = payu_payment.response.url
+        provider_data = { 
+          'order_id' => payu_payment.response.order_id
+         }
+         @payment.update!(provider_data: provider_data)
       else
         @payment.cancel
         @redirect_url = order_path(id: @order.token)
