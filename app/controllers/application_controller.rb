@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   helper_method :categories
 
   private
