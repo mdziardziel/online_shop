@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :carts, only: %i(index)
   resources :orders, only: %i(show create)
   resources :payments, only: %i(new create)
+  post '/payments/cancel', to: 'payments#cancel'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

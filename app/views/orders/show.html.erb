@@ -11,9 +11,13 @@
       <label>Order status  </label> <%= @order.status %><br>
       <label>Payment status  </label> <%= @order.payment_status %>
     </p>
-    <%= link_to "Pay", 
-      new_payment_path(order_token: @order.token), 
-      class: "btn btn-primary #{'disabled' if [Payment::ACCEPTED_STATUS, Payment::PENDING_STATUS].include?(@order.payment_status)}" %>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= link_to "Pay", new_payment_path(order_token: @order.token),
+            class: "btn btn-primary #{'disabled' if [Payment::ACCEPTED_STATUS, Payment::PENDING_STATUS].include?(@order.payment_status)}" %>
+      <% if @order.payment_status == Payment::PENDING_STATUS %>
+        <%= button_to "Cancel Pending", payments_cancel_path(order_token: @order.token), class: "btn btn-secondary" %>
+      <% end %>
+    </div>
   </div>
 </div>
 
