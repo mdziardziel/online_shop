@@ -8,7 +8,7 @@ module Payu
     METHOD = 'post'.freeze
     AUTHORIZATION_HEADER = 'Bearer d9a4536e-62ba-4f60-8017-6053211d3f47'.freeze
     CONTENT_TYPE_HEADER = 'application/json'.freeze
-    NOTIFY_URL = 'https://your.eshop.com/notify'.freeze
+    NOTIFY_PATH = "/payments/provider_notify".freeze
     CUSTOMER_IP = '127.0.0.1'.freeze
     MERCHANT_POST_ID = '300746'.freeze
     DESCRIPTION = 'Online shop'.freeze
@@ -45,7 +45,7 @@ module Payu
   
     def set_body
       request.body = JSON.dump({
-        'notifyUrl' => NOTIFY_URL,
+        'notifyUrl' => "#{ENV['URL']}#{NOTIFY_PATH}",
         'customerIp' => CUSTOMER_IP,
         'merchantPosId' => MERCHANT_POST_ID,
         'description' => DESCRIPTION,
