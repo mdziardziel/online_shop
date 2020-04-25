@@ -1,8 +1,11 @@
 class Payment < ApplicationRecord
-  STATUSES = %w(accepted pending cancelled)
-  ACCEPTED_STATUS = 'accepted'
+  COMPLETED_STATUS = 'completed'
   PENDING_STATUS = 'pending'
   CANCELLED_STATUS = 'cancelled'
+  WAITING_STATUS = 'waiting_for_confirmation'
+  REQUESTED_STATUS = 'requested'
+  STATUSES = [COMPLETED_STATUS, PENDING_STATUS, CANCELLED_STATUS, WAITING_STATUS, REQUESTED_STATUS]
+
 
   validates :buyer, :status, :amount, presence: true
   validates :amount, numericality: true
@@ -19,6 +22,6 @@ class Payment < ApplicationRecord
   private 
 
   def set_status
-    self.status = PENDING_STATUS
+    self.status = REQUESTED_STATUS
   end
 end

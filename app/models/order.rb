@@ -16,9 +16,9 @@ class Order < ApplicationRecord
   before_validation :set_status, :set_token, on: :create
 
   def payment_status
-    return Payment::ACCEPTED_STATUS if Payment.find_by(order_id: id, status:Payment::ACCEPTED_STATUS)
-    return Payment::PENDING_STATUS if Payment.find_by(order_id: id, status:Payment::PENDING_STATUS)
-    return Payment::CANCELLED_STATUS if Payment.find_by(order_id: id, status:Payment::CANCELLED_STATUS)
+    return Payment::COMPLETED_STATUS if Payment.find_by(order_id: id, status: Payment::COMPLETED_STATUS)
+    return Payment::PENDING_STATUS if Payment.find_by(order_id: id, status: Payment::PENDING_STATUS)
+    return Payment::CANCELLED_STATUS if Payment.find_by(order_id: id, status: Payment::CANCELLED_STATUS)
 
     'not started'
   end

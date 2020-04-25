@@ -13,9 +13,9 @@
     </p>
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= link_to "Pay", new_payment_path(order_token: @order.token),
-            class: "btn btn-primary #{'disabled' if [Payment::ACCEPTED_STATUS, Payment::PENDING_STATUS].include?(@order.payment_status)}" %>
-      <% if @order.payment_status == Payment::PENDING_STATUS %>
-        <%= button_to "Cancel Pending", payments_cancel_path(order_token: @order.token), class: "btn btn-secondary" %>
+            class: "btn btn-primary #{'disabled' if [Payment::COMPLETED_STATUS, Payment::PENDING_STATUS, Payment::WAITING_STATUS, Payment::REQUESTED_STATUS].include?(@order.payment_status)}" %>
+      <% if [Payment::PENDING_STATUS, Payment::REQUESTED_STATUS].include?(@order.payment_status) %>
+        <%= button_to "Cancel Payment", payments_cancel_path(order_token: @order.token), class: "btn btn-secondary" %>
       <% end %>
     </div>
   </div>

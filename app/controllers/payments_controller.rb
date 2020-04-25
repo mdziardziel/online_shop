@@ -25,6 +25,15 @@ class PaymentsController < ApplicationController
     redirect_back fallback_location: order_path(id: order.token)
   end
 
+  def provider_notify
+    payu_status = params[:order][:status]
+    order_id = params[:order][:order_id]
+    status = ::Payu::PaymentStatus.convert(payu_status)
+    Payment.where("provider_data->>'order_id' = ?", order_id).first.update!(status: status)
+
+    head :ok
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_payment
@@ -36,7 +45,7 @@ class PaymentsController < ApplicationController
     end
 
     def payu_payment
-      @payu_payment ||= PayuPayment.new(@payment)
+      @payu_payment ||= ::Payu::Payment.new(@payment)
     end
 
     def process_payment
