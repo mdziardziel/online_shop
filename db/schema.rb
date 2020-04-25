@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_04_25_085749) do
   create_table "orders", force: :cascade do |t|
     t.string "status"
     t.decimal "amount"
-    t.integer "token"
+    t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

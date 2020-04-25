@@ -16,6 +16,7 @@
 //= require popper
 //= require bootstrap
 //= require material
+//= require turbolinks
 //= require_tree .
 
 
@@ -32,7 +33,7 @@ function getCookie(cname) {
 function getCart(){
   let cartCookie = getCookie('cart')
   let cart = null
-  if(cartCookie == null) {
+  if(cartCookie == null || cartCookie == "") {
     cart = {}
   } else {
     cart = JSON.parse(cartCookie)
@@ -48,7 +49,6 @@ function addProductToCart(id) {
     cart[id] = parseInt(cart[id]) + 1
   }
   document.cookie = "cart=" + JSON.stringify(cart);
-  displayCartProductsNum()
 }
 
 function removeProductFromCart(id, sf) {
@@ -58,7 +58,6 @@ function removeProductFromCart(id, sf) {
   }
   document.cookie = "cart=" + JSON.stringify(cart);
   $(sf).closest('#cart-product').remove()
-  displayCartProductsNum()
 }
 
 function decrementProductFromCart(id) {
@@ -73,7 +72,6 @@ function decrementProductFromCart(id) {
   let counter = $("#product-" + id + "-quantity")
   let counter_val = parseInt(counter.val())
   if(counter_val > 0) { counter.val( counter_val - 1 ) }
-  displayCartProductsNum()
 }
 
 function incrementProductToCart(id) {
@@ -86,12 +84,10 @@ function incrementProductToCart(id) {
   document.cookie = "cart=" + JSON.stringify(cart);
   let counter = $("#product-" + id + "-quantity")
   counter.val( parseInt(counter.val()) + 1 )
-  displayCartProductsNum()
 }
 
 function clearCart(){
   document.cookie = "cart=" + JSON.stringify({});
-  displayCartProductsNum()
 }
 
 function productsInCartNum(){
@@ -108,6 +104,6 @@ function sum(obj) {
   return Object.keys(obj).reduce((sum,key)=>sum+parseFloat(obj[key]||0),0);
 }
 
-$( document ).ready(function() {
+$(document).on('ready turbolinks:load', function() {
   displayCartProductsNum()
 });

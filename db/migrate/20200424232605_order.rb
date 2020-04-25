@@ -3,7 +3,7 @@ class Order < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.string :status
       t.decimal :amount
-      t.integer :token, unique: true
+      t.string :token, unique: true
 
       t.timestamps
     end

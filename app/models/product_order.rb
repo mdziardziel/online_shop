@@ -1,7 +1,7 @@
 class ProductOrder < ApplicationRecord
   self.table_name = 'products_orders'
 
-  validates :order_id, :product_id, :amount, :quantity, presence: true
+  validates :amount, :quantity, presence: true
   validates :amount, numericality: true
   validates :quantity, numericality: { only_integer: true }
 
