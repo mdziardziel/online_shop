@@ -1,7 +1,8 @@
 class Payment < ApplicationRecord
   STATUSES = %w(accepted pending cancelled)
   ACCEPTED_STATUS = 'accepted'
-  ACCEPTED_STATUS = 'pending'
+  PENDING_STATUS = 'pending'
+  CANCELLED_STATUS = 'pending'
 
   validates :buyer, :status, :amount, presence: true
   validates :amount, numericality: true

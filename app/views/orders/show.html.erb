@@ -8,11 +8,12 @@
   <div class="card-body">
     <p class="card-text">
       <label>Amount  </label> <%= @order.amount %> <br>
-      <label>Status  </label> <%= @order.status %>
+      <label>Order status  </label> <%= @order.status %><br>
+      <label>Payment status  </label> <%= @order.payment_status %>
     </p>
-    <%= form_with(url: '', method: :get) do %>
-       <%= submit_tag "Pay", class: 'btn btn-primary' %>
-    <% end %>
+    <%= link_to "Pay", 
+      new_payment_path(order_token: @order.token), 
+      class: "btn btn-primary #{'disabled' if [Payment::ACCEPTED_STATUS, Payment::PENDING_STATUS].include?(@order.payment_status)}" %>
   </div>
 </div>
 
