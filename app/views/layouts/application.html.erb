@@ -7,26 +7,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+
   </head>
 
   <body>
 
-<nav class="navbar fixed-top navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Fixed top</a>
-  <%= link_to 'Cart', carts_path, class: 'nav-link' %>
-  <div id='cart_min'></div>
-<%= link_to 'clear cart', '#', onclick: "clearCart()" %>
-</nav> <br> <br> <br>
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Online Shop</a>
+      <ul class="list-inline">
+        <div id='cart_min', class='list-inline-item'></div>
+        <%= link_to material_icon.shopping_cart.md_36, carts_path, class: 'list-inline-item' %>
+        <%= link_to material_icon.remove_shopping_cart.md_36, '#', onclick: "clearCart()", class: 'list-inline-item' %>
+      </ul>
+    </nav> <br> <br> <br>
 
 
-  <div class="row ">
-    <div class="" style='background-color: black; margin-top: -15px; height: 100%'>
-      <ul class="nav flex-column fixed-top" style='width: 300px;background-color: black; height: 100%; margin-top: 55px;'>
-        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
-        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
-        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
-        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
-        <li class="nav-item"> <a class="nav-link active" href="#"></a></li>
+    <div class="left-menu">
+      <ul class="nav flex-column">
         <li class="nav-item">
           <%= link_to 'All', products_path, class: 'nav-link' %>
         </li>
