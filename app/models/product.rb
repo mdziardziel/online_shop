@@ -8,6 +8,9 @@ class Product < ApplicationRecord
   validates :price, numericality: true
   validates :quantity, numericality: { only_integer: true }
 
+  has_many :products_orders, class_name: 'ProductOrder', inverse_of: :product
+  has_many :orders, through: :products_orders, inverse_of: :products
+
   def picture_url
     picture || DEFAULT_PICTURE
   end
