@@ -6,11 +6,9 @@ module Payu
     
     PAYU_URI = 'https://secure.snd.payu.com/api/v2_1/orders'.freeze
     METHOD = 'post'.freeze
-    AUTHORIZATION_HEADER = 'Bearer d9a4536e-62ba-4f60-8017-6053211d3f47'.freeze
     CONTENT_TYPE_HEADER = 'application/json'.freeze
     NOTIFY_PATH = "/payments/provider_notify".freeze
     CUSTOMER_IP = '127.0.0.1'.freeze
-    MERCHANT_POST_ID = '300746'.freeze
     DESCRIPTION = 'Online shop'.freeze
     CURRENCY_CODE = 'PLN'.freeze
     INVOICE_DISABLED = 'true'.freeze
@@ -22,6 +20,7 @@ module Payu
     def initialize(payment)
       @payment = payment
   
+      @authorization_token = AuthorizationToken.new
       set_headers
       set_body
     end
@@ -40,14 +39,14 @@ module Payu
   
     def set_headers
       request.content_type = CONTENT_TYPE_HEADER
-      request['Authorization'] = AUTHORIZATION_HEADER
+      request['Authorization'] = "Bearer #{bearer_token}"
     end
   
     def set_body
       request.body = JSON.dump({
         'notifyUrl' => "#{ENV['URL']}#{NOTIFY_PATH}",
         'customerIp' => CUSTOMER_IP,
-        'merchantPosId' => MERCHANT_POST_ID,
+        'merchantPosId' => ENV['CLIENT_ID'],
         'description' => DESCRIPTION,
         'currencyCode' => CURRENCY_CODE,
         'totalAmount' => total_amount.to_s,
@@ -91,6 +90,57 @@ module Payu
   
     def uri
       @uri ||= URI.parse(PAYU_URI)
+    end
+
+    def bearer_token
+      @authorization_token.get
+    end
+
+    class AuthorizationToken
+      OVERLAP_SECS = 10
+
+      def initialize
+        request.set_form_data(
+          "client_id" => ENV['CLIENT_ID'],
+          "client_secret" => ENV['CLIENT_SECRET'],
+          "grant_type" => "client_credentials",
+        )
+
+        refresh_token
+      end
+
+      def get
+        refresh_token if Time.now >= @created_at + @expires_in - OVERLAP_SECS
+
+        @token
+      end
+
+      private
+
+      def refresh_token
+        @created_at = Time.now
+        json_response = JSON.parse(response.body)
+        @expires_in = json_response['expires_in'].to_i
+        @token = json_response['access_token']
+      end
+
+      def uri
+        @uri ||= URI.parse("https://secure.snd.payu.com/pl/standard/user/oauth/authorize")
+      end
+
+      def request_options
+        { use_ssl: uri.scheme == "https" }
+      end
+
+      def request
+        @request ||= Net::HTTP::Post.new(uri)
+      end
+
+      def response
+        Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
+          http.request(request)
+        end
+      end
     end
   
     class Response
