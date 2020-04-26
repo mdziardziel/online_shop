@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :payments, only: %i(new create)
   post '/payments/cancel', to: 'payments#cancel'
   post '/payments/provider_notify', to: 'payments#provider_notify'
+  root to: 'products#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

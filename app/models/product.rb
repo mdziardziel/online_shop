@@ -6,7 +6,7 @@ class Product < ApplicationRecord
 
   validates :name, :description, :quantity, :price, :category, presence: true
   validates :price, numericality: true
-  validates :quantity, numericality: { only_integer: true }
+  validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   has_many :products_orders, class_name: 'ProductOrder', inverse_of: :product
   has_many :orders, through: :products_orders, inverse_of: :products

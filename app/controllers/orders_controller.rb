@@ -17,13 +17,22 @@ class OrdersController < ApplicationController
       { product_id: product.id, quantity: quantity, amount: amount }
     end
 
-    order = Order.new(products_orders_attributes: products_orders, amount: total_amount)
+    @order = Order.new(products_orders_attributes: products_orders, amount: total_amount)
 
-    if order.save
+    result = false
+
+    Order.transaction do
+      @order.save!
+      update_products_quantity
+
+      result = true
+    end
+
+    if result
       cookies['cart'] = { value: nil, path: nil }
-      redirect_to order_path(id: order.token)
+      redirect_to order_path(id: @order.token)
     else
-      flash[:error] = order.errors.full_messages
+      flash[:error] = @order.errors.full_messages
     end
   end
 
@@ -35,5 +44,13 @@ class OrdersController < ApplicationController
 
     def order_params
       params.require(:products)
+    end
+
+    def update_products_quantity
+      @order.products_orders.each do |po|
+        product = po.product
+        new_quantity = product.quantity - po.quantity
+        product.update!(quantity: new_quantity)
+      end
     end
 end
