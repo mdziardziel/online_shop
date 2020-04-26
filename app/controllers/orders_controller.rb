@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
 
     if result
       cookies['cart'] = { value: nil, path: nil }
-      cooekis['last_order_token'] = { value: @order.token, path: nil }
+      cookies['last_order_token'] = { value: @order.token, path: nil }
       redirect_to order_path(id: @order.token)
     else
       flash[:error] = @order.errors.full_messages

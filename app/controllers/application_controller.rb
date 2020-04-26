@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
 
   def back_to_cart
     return unless request.referer == 'https://merch-prod.snd.payu.com/simulator/spring/web/blikweb/transaction/transaction_init/auth'
-
+    return if cooekis['last_order_token'].nil?
+    
     redirect_to order_path(id: cooekis['last_order_token'])
     return
   end
