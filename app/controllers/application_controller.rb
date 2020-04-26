@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     return unless request.referer == 'https://merch-prod.snd.payu.com/simulator/spring/web/blikweb/transaction/transaction_init/auth'
     return if cookies['last_order_token'].nil?
 
-    redirect_to order_path(id: cooekis['last_order_token'])
+    redirect_to order_path(id: cookies['last_order_token'])
     return
   end
 end
