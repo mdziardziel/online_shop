@@ -27,10 +27,12 @@ class PaymentsController < ApplicationController
   end
 
   def provider_notify
+    # TODO check if request comes from payu by checking x-openpayu-signature header
     payu_status = params[:order][:status]
     order_id = params[:order]['orderId']
     status = ::Payu::PaymentStatus.convert(payu_status)
-    Payment.where("provider_data->>'order_id' = ?", order_id).first.update!(status: status)
+    payment = Payment.where("provider_data->>'order_id' = ?", order_id).first
+    payment.update!(status: status)
 
     head :ok
   end

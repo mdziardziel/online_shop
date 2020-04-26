@@ -13,6 +13,7 @@ class Payment < ApplicationRecord
   belongs_to :order, inverse_of: :payments
 
   before_validation :set_status, on: :create
+  after_update :update_order_status
 
   def cancel
     # TODO call provider api to cancel payments
@@ -23,5 +24,11 @@ class Payment < ApplicationRecord
 
   def set_status
     self.status = REQUESTED_STATUS
+  end
+
+  def update_order_status
+    return if previous_changes['status']&.second != COMPLETED_STATUS
+
+    order.update!(status: Order::PAID_STATUS)
   end
 end
