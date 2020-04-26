@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     order = Order.new(products_orders_attributes: products_orders, amount: total_amount)
 
     if order.save
-      cookies['cart'] = nil
+      cookies['cart'] = { value: nil, path: nil }
       redirect_to order_path(id: order.token)
     else
       flash[:error] = order.errors.full_messages
