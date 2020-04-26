@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.kept
+    @products = Product.kept.order(:name)
     @products = @products.where(category: params[:category]) if  params[:category].present?
   end
 
