@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   private
   
   def categories
-    Product.kept.pluck(:category).uniq
+    Product.kept.pluck(:category).sort.uniq
   end
 
   def basic_auth_disabled
