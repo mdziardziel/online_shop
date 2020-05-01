@@ -15,3 +15,18 @@ default admin login/password
 User: admin@example.com
 Password: password
 ```
+
+generating documentation
+```
+yardoc 'lib/**/*.rb' 'app/**/*.rb'
+```
+
+decumentation path
+```
+/doc/index.html
+```
+
+erd 
+```
+/doc/erd.pdf
+```
