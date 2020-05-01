@@ -5,7 +5,6 @@ module Payu
     require 'json'
     
     PAYU_URI = 'https://secure.snd.payu.com/api/v2_1/orders'.freeze
-    METHOD = 'post'.freeze
     CONTENT_TYPE_HEADER = 'application/json'.freeze
     NOTIFY_PATH = "/payments/provider_notify".freeze
     CUSTOMER_IP = '127.0.0.1'.freeze
@@ -20,7 +19,6 @@ module Payu
     def initialize(payment)
       @payment = payment
   
-      @authorization_token = AuthorizationToken.new
       set_headers
       set_body
     end
@@ -39,7 +37,7 @@ module Payu
   
     def set_headers
       request.content_type = CONTENT_TYPE_HEADER
-      request['Authorization'] = "Bearer #{bearer_token}"
+      request['Authorization'] = "Bearer #{AuthorizationToken.call}"
     end
   
     def set_body
@@ -92,12 +90,14 @@ module Payu
       @uri ||= URI.parse(PAYU_URI)
     end
 
-    def bearer_token
-      @authorization_token.get
-    end
-
     class AuthorizationToken
       OVERLAP_SECS = 10
+      PAYU_AUTH_URI = 'https://secure.snd.payu.com/pl/standard/user/oauth/authorize'.freeze
+
+      def self.call
+        @@token ||= new
+        @@token.call
+      end
 
       def initialize
         request.set_form_data(
@@ -106,18 +106,21 @@ module Payu
           "grant_type" => "client_credentials",
         )
 
-        refresh_token
+        refresh_token!
       end
 
-      def get
-        refresh_token if Time.now >= @created_at + @expires_in - OVERLAP_SECS
-
+      def call
+        refresh_token! if token_outdated?
         @token
       end
 
       private
 
-      def refresh_token
+      def token_outdated?
+        Time.now >= @created_at + @expires_in - OVERLAP_SECS
+      end
+
+      def refresh_token!
         @created_at = Time.now
         json_response = JSON.parse(response.body)
         @expires_in = json_response['expires_in'].to_i
@@ -125,7 +128,7 @@ module Payu
       end
 
       def uri
-        @uri ||= URI.parse("https://secure.snd.payu.com/pl/standard/user/oauth/authorize")
+        @uri ||= URI.parse(PAYU_AUTH_URI)
       end
 
       def request_options
