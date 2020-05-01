@@ -12,8 +12,6 @@ class OrdersController < ApplicationController
   # reduces products quantity
   #
   # resets cart
-  #
-  # saves last_order_token cookie needed for redirection after payu payment
   def create
     products = Product.where(id: order_params.keys)
     total_amount = 0
@@ -38,7 +36,6 @@ class OrdersController < ApplicationController
 
     if result
       cookies['cart'] = { value: nil, path: nil }
-      cookies['last_order_token'] = { value: @order.token, path: nil }
       redirect_to order_path(id: @order.token)
     else
       flash[:error] = @order.errors.full_messages
