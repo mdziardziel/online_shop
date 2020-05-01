@@ -37,9 +37,12 @@ class PaymentsController < ApplicationController
   #
   # gets notifications from payment provider about payment status change
   #
+  # checks authenticity of request
+  #
   # returns 200 status
   def provider_notify
-    # TODO check if request comes from payu by checking x-openpayu-signature header
+    RequestAuthenticityChecker.call!(request)
+
     payu_status = params[:order][:status]
     order_id = params[:order]['orderId']
     status = ::Payu::PaymentStatus.convert(payu_status)
@@ -80,6 +83,46 @@ class PaymentsController < ApplicationController
       else
         @payment.cancel
         @redirect_url = order_path(id: @order.token)
+      end
+    end
+
+      ##
+    # checks if request is authentic request from whitelisted providers
+    class RequestAuthenticityChecker
+      # whitelisted payu ips
+      WHITELISTED_IPS = %w(185.68.14.10 185.68.14.11 185.68.14.12 185.68.14.26 185.68.14.27 185.68.14.28)
+
+      pattr_initialize :request
+
+      def self.call(request)
+        new(request).call
+      end
+
+      def self.call!(request)
+        new(request).call!
+      end
+
+      # returns true if request is authentic
+      def call
+        ip_trusted? && signature_verified?
+      end
+
+      # raises exception if request is not authentic
+      def call!
+        raise 'request not authentic' unless ip_trusted? && signature_verified?
+      end
+
+      private
+
+      # checks if ip is trusted
+      def ip_trusted?
+        WHITELISTED_IPS.include?(request.remote_ip)
+      end
+
+      # verifies signature from x-openpayu-signature header
+      def signature_verified?
+        # TODO check if request comes from payu by checking x-openpayu-signature header
+        true
       end
     end
 end
