@@ -108,7 +108,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>product model</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
   
     <h2>
       Constant Summary
@@ -118,12 +129,34 @@
     <dl class="constants">
       
         <dt id="DEFAULT_PICTURE-constant" class="">DEFAULT_PICTURE =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>fallback picture for product when no one is saved in database</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://upload.wikimedia.org/wikipedia/en/0/00/The_Child_aka_Baby_Yoda_%28Star_Wars%29.jpg</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="PICTURE_SIZE-constant" class="">PICTURE_SIZE =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>picture size</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>250x250</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
@@ -161,7 +194,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>returns original picture url or fallfack when original doesn&#39;t exist.</p>
+</div></span>
   
 </li>
 
@@ -192,18 +227,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns original picture url or fallfack when original doesn&#39;t exist</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
-16</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/product.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/models/product.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_picture_url'>picture_url</span>
   <span class='id identifier rubyid_picture'>picture</span> <span class='op'>||</span> <span class='const'><span class='object_link'><a href="#DEFAULT_PICTURE-constant" title="Product::DEFAULT_PICTURE (constant)">DEFAULT_PICTURE</a></span></span>
@@ -218,7 +264,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:29 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

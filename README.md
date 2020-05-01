@@ -18,8 +18,8 @@ Password: password
 
 generating documentation
 ```
-yardoc 'lib/**/*.rb' 'app/**/*.rb'
-```
+ yardoc --private 'lib/**/*.rb' 'app/controllers/*.rb' 'app/models/*.rb' - README
+ ```
 
 decumentation path
 ```

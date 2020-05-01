@@ -135,7 +135,57 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>POST /orders.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#order_params-instance_method" title="#order_params (instance method)">#<strong>order_params</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>requires products in request body.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#set_order-instance_method" title="#set_order (instance method)">#<strong>set_order</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets order by token.</p>
+</div></span>
   
 </li>
 
@@ -158,7 +208,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>GET /products/1 GET /products/1.json.</p>
+<p>GET /orders/fhe6g32238fdkd839th587.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#update_products_quantity-instance_method" title="#update_products_quantity (instance method)">#<strong>update_products_quantity</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>reduce the quantity of products by number of ordered products.</p>
 </div></span>
   
 </li>
@@ -175,6 +249,11 @@
   
   
   
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#back_to_cart-instance_method" title="ApplicationController#back_to_cart (method)">#back_to_cart</a></span>, <span class='object_link'><a href="ApplicationController.html#basic_auth_disabled-instance_method" title="ApplicationController#basic_auth_disabled (method)">#basic_auth_disabled</a></span>, <span class='object_link'><a href="ApplicationController.html#categories-instance_method" title="ApplicationController#categories (method)">#categories</a></span></p>
+
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -189,20 +268,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>POST /orders</p>
+
+<p>creates new join records between order and products</p>
+
+<p>reduces products quantity</p>
+
+<p>resets cart</p>
+
+<p>saves last_order_token cookie needed for redirection after payu payment</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
-11
-12
-13
-14
-15
-16
 17
 18
 19
@@ -224,10 +314,18 @@
 35
 36
 37
-38</pre>
+38
+39
+40
+41
+42
+43
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_products'>products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_order_params'>order_params</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
@@ -265,9 +363,9 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="show-instance_method">
+  <h3 class="signature " id="order_params-instance_method">
   
-    #<strong>show</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>order_params</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
   
 
   
@@ -276,7 +374,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>GET /products/1 GET /products/1.json</p>
+<p>requires products in request body</p>
 
 
   </div>
@@ -290,13 +388,144 @@
       <pre class="lines">
 
 
-6
-7</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_order_params'>order_params</span>
+  <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:products</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_order-instance_method">
+  
+    #<strong>set_order</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets order by token</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_order'>set_order</span>
+  <span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Order.html" title="Order (class)">Order</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>token:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="show-instance_method">
+  
+    #<strong>show</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>GET /orders/fhe6g32238fdkd839th587</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_products_quantity-instance_method">
+  
+    #<strong>update_products_quantity</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>reduce the quantity of products by number of ordered products</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_products_quantity'>update_products_quantity</span>
+  <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_products_orders'>products_orders</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_po'>po</span><span class='op'>|</span>
+    <span class='id identifier rubyid_product'>product</span> <span class='op'>=</span> <span class='id identifier rubyid_po'>po</span><span class='period'>.</span><span class='id identifier rubyid_product'>product</span>
+    <span class='id identifier rubyid_new_quantity'>new_quantity</span> <span class='op'>=</span> <span class='id identifier rubyid_product'>product</span><span class='period'>.</span><span class='id identifier rubyid_quantity'>quantity</span> <span class='op'>-</span> <span class='id identifier rubyid_po'>po</span><span class='period'>.</span><span class='id identifier rubyid_quantity'>quantity</span>
+    <span class='id identifier rubyid_product'>product</span><span class='period'>.</span><span class='id identifier rubyid_update!'>update!</span><span class='lparen'>(</span><span class='label'>quantity:</span> <span class='id identifier rubyid_new_quantity'>new_quantity</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -308,7 +537,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

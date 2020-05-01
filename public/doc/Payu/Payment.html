@@ -102,11 +102,11 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Creates a new shape described by a <code>polyline</code>.</p>
+<p>Requests <code>Payu</code> for a new order</p>
 
-<p>If the <code>polyline</code> does not end at the same point it started at the first pointed is copied and placed at the end of the line.</p>
+<p>You can find more informations about <code>Payu</code> API here <a href="http://developers.payu.com/pl/restapi.html">developers.payu.com/pl/restapi.html</a></p>
 
-<p>An ArgumentError is raised if the line crosses itself, but shapes may be concave.</p>
+<p>Compatible <code>Payu</code> API version: <strong>2.1</strong></p>
 
 
   </div>
@@ -134,7 +134,18 @@
     <dl class="constants">
       
         <dt id="PAYU_URI-constant" class="">PAYU_URI =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>Payu  OrderCreateRequest endpoint (sandbox)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://secure.snd.payu.com/api/v2_1/orders</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
@@ -144,37 +155,98 @@
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>application/json</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
         <dt id="NOTIFY_PATH-constant" class="">NOTIFY_PATH =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>application endpoint which will be notified by Payu about order status change</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/payments/provider_notify</span><span class='tstring_end'>&quot;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
-        <dt id="CUSTOMER_IP-constant" class="">CUSTOMER_IP =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
-      
         <dt id="DESCRIPTION-constant" class="">DESCRIPTION =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>shop description</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Online shop</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
         <dt id="CURRENCY_CODE-constant" class="">CURRENCY_CODE =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>currency used in transaction</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>PLN</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
         <dt id="INVOICE_DISABLED-constant" class="">INVOICE_DISABLED =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>used in sandbox mode to disable invoices creation</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>true</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
         <dt id="PROTOCOL-constant" class="">PROTOCOL =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>order request protocol</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="LANGUAGE-constant" class="">LANGUAGE =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>user&#39;s language</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>pl</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
@@ -194,6 +266,54 @@
     </h2>
 
     <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#buyer-instance_method" title="#buyer (instance method)">#<strong>buyer</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns informations about customer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#customer_ip-instance_method" title="#customer_ip (instance method)">#<strong>customer_ip</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns customer ip, currently harcoded.</p>
+</div></span>
+  
+</li>
+
       
         <li class="public ">
   <span class="summary_signature">
@@ -215,7 +335,55 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of Payment.</p>
+<p>initializes headers and body of request.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#products-instance_method" title="#products (instance method)">#<strong>products</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>returns hash with products ordered by customer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#req_options-instance_method" title="#req_options (instance method)">#<strong>req_options</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets http protocol.</p>
 </div></span>
   
 </li>
@@ -238,7 +406,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>order creation request.</p>
+</div></span>
   
 </li>
 
@@ -260,7 +430,105 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>decorated response.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#set_body-instance_method" title="#set_body (instance method)">#<strong>set_body</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets body required by OrderCreateRequest.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#set_headers-instance_method" title="#set_headers (instance method)">#<strong>set_headers</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets headers required by OrderCreateRequest.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#total_amount-instance_method" title="#total_amount (instance method)">#<strong>total_amount</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>converts amount to format accepted by payu.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#uri-instance_method" title="#uri (instance method)">#<strong>uri</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>creates uri object from string uri.</p>
+</div></span>
   
 </li>
 
@@ -283,7 +551,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of Payment</p>
+<p>initializes headers and body of request</p>
 
 
   </div>
@@ -297,15 +565,15 @@
       <pre class="lines">
 
 
-27
-28
-29
-30
-31
-32</pre>
+32
+33
+34
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='rparen'>)</span>
   <span class='ivar'>@payment</span> <span class='op'>=</span> <span class='id identifier rubyid_payment'>payment</span>
@@ -326,7 +594,201 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="request-instance_method">
+  <h3 class="signature first" id="buyer-instance_method">
+  
+    #<strong>buyer</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns informations about customer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+95
+96
+97
+98
+99
+100
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 95</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_buyer'>buyer</span>
+  <span class='ivar'>@buyer</span> <span class='op'>||=</span> <span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>email</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_buyer'>buyer</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>email</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>phone</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_buyer'>buyer</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>phone_number</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>firstName</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_buyer'>buyer</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>first_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>lastName</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_buyer'>buyer</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>last_name</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>language</span><span class='tstring_end'>&quot;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="#LANGUAGE-constant" title="Payu::Payment::LANGUAGE (constant)">LANGUAGE</a></span></span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="customer_ip-instance_method">
+  
+    #<strong>customer_ip</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns customer ip, currently harcoded</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+116
+117
+118
+119</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 116</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_customer_ip'>customer_ip</span>
+  <span class='comment'># TODO return real customer&#39;s ip
+</span>  <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>127.0.0.1</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="products-instance_method">
+  
+    #<strong>products</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>returns hash with products ordered by customer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 84</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_products'>products</span>
+  <span class='ivar'>@payment</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='period'>.</span><span class='id identifier rubyid_products_orders'>products_orders</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_product_order'>product_order</span><span class='op'>|</span>
+    <span class='lbrace'>{</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>name</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_product_order'>product_order</span><span class='period'>.</span><span class='id identifier rubyid_product'>product</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>unitPrice</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='lparen'>(</span><span class='id identifier rubyid_product_order'>product_order</span><span class='period'>.</span><span class='id identifier rubyid_product'>product</span><span class='period'>.</span><span class='id identifier rubyid_price'>price</span> <span class='op'>*</span> <span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
+      <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>quantity</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_product_order'>product_order</span><span class='period'>.</span><span class='id identifier rubyid_quantity'>quantity</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="req_options-instance_method">
+  
+    #<strong>req_options</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets http protocol</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79
+80
+81</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_req_options'>req_options</span>
+  <span class='lbrace'>{</span>
+    <span class='label'>use_ssl:</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="#PROTOCOL-constant" title="Payu::Payment::PROTOCOL (constant)">PROTOCOL</a></span></span>
+  <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="request-instance_method">
   
     #<strong>request</strong>  &#x21d2; <tt>Object</tt> 
   
@@ -334,18 +796,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>order creation request</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-40
-41
-42</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 40</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span>
   <span class='ivar'>@request</span> <span class='op'>||=</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='op'>::</span><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
@@ -364,20 +837,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>decorated response</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36
-37
-38</pre>
+40
+41
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_response'>response</span>
   <span class='ivar'>@response</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="Payment/Response.html" title="Payu::Payment::Response (class)">Response</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Payu::Payment#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_req_options'>req_options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_http'>http</span><span class='op'>|</span>
@@ -389,12 +873,202 @@
 </table>
 </div>
     
+      <div class="method_details ">
+  <h3 class="signature " id="set_body-instance_method">
+  
+    #<strong>set_body</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets body required by OrderCreateRequest</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 60</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_body'>set_body</span>
+  <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_dump'>dump</span><span class='lparen'>(</span><span class='lbrace'>{</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>notifyUrl</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>URL</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="#NOTIFY_PATH-constant" title="Payu::Payment::NOTIFY_PATH (constant)">NOTIFY_PATH</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>customerIp</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_customer_ip'>customer_ip</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>merchantPosId</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'>ENV</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>CLIENT_ID</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>description</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="#DESCRIPTION-constant" title="Payu::Payment::DESCRIPTION (constant)">DESCRIPTION</a></span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>currencyCode</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="#CURRENCY_CODE-constant" title="Payu::Payment::CURRENCY_CODE (constant)">CURRENCY_CODE</a></span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>totalAmount</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_total_amount'>total_amount</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>buyer</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_buyer'>buyer</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>settings</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span><span class='lbrace'>{</span>
+        <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>invoiceDisabled</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='const'><span class='object_link'><a href="#INVOICE_DISABLED-constant" title="Payu::Payment::INVOICE_DISABLED (constant)">INVOICE_DISABLED</a></span></span>
+    <span class='rbrace'>}</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>products</span><span class='tstring_end'>&#39;</span></span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_products'>products</span>
+  <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_headers-instance_method">
+  
+    #<strong>set_headers</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets headers required by OrderCreateRequest</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_headers'>set_headers</span>
+  <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_content_type'>content_type</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#CONTENT_TYPE_HEADER-constant" title="Payu::Payment::CONTENT_TYPE_HEADER (constant)">CONTENT_TYPE_HEADER</a></span></span>
+  <span class='id identifier rubyid_request'>request</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Authorization</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Bearer </span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Payment/AuthorizationToken.html" title="Payu::Payment::AuthorizationToken (class)">AuthorizationToken</a></span></span><span class='period'>.</span><span class='id identifier rubyid_call'><span class='object_link'><a href="Payment/AuthorizationToken.html#call-class_method" title="Payu::Payment::AuthorizationToken.call (method)">call</a></span></span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="total_amount-instance_method">
+  
+    #<strong>total_amount</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>converts amount to format accepted by payu</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_total_amount'>total_amount</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_payment'>payment</span><span class='period'>.</span><span class='id identifier rubyid_amount'>amount</span> <span class='op'>*</span> <span class='int'>100</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="uri-instance_method">
+  
+    #<strong>uri</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>creates uri object from string uri</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+111
+112
+113</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 111</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_uri'>uri</span>
+  <span class='ivar'>@uri</span> <span class='op'>||=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#PAYU_URI-constant" title="Payu::Payment::PAYU_URI (constant)">PAYU_URI</a></span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
   </div>
 
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

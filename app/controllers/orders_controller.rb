@@ -1,11 +1,19 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show]
 
-  # GET /products/1
-  # GET /products/1.json
+  # GET /orders/fhe6g32238fdkd839th587
   def show
   end
 
+  # POST /orders
+  #
+  # creates new join records between order and products
+  # 
+  # reduces products quantity
+  #
+  # resets cart
+  #
+  # saves last_order_token cookie needed for redirection after payu payment
   def create
     products = Product.where(id: order_params.keys)
     total_amount = 0
@@ -38,15 +46,17 @@ class OrdersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # sets order by token
     def set_order
       @order = Order.find_by(token: params[:id])
     end
 
+    #requires products in request body
     def order_params
       params.require(:products)
     end
 
+    # reduce the quantity of products by number of ordered products
     def update_products_quantity
       @order.products_orders.each do |po|
         product = po.product

@@ -99,7 +99,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>decorates payu order response</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
   
     <h2>
       Constant Summary
@@ -109,7 +120,18 @@
     <dl class="constants">
       
         <dt id="SUCCESS_STATUS-constant" class="">SUCCESS_STATUS =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>success response status</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SUCCESS</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
@@ -147,7 +169,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>json parsed body.</p>
+</div></span>
   
 </li>
 
@@ -191,7 +215,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>new order id.</p>
+</div></span>
   
 </li>
 
@@ -213,7 +239,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>response status.</p>
+</div></span>
   
 </li>
 
@@ -235,7 +263,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>checks if response has success status.</p>
+</div></span>
   
 </li>
 
@@ -257,7 +287,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>url which will be used by user to pay for order.</p>
+</div></span>
   
 </li>
 
@@ -280,18 +312,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>json parsed body</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-162
-163
-164</pre>
+207
+208
+209</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 162</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_body'>body</span>
   <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span>
@@ -316,12 +359,12 @@
       <pre class="lines">
 
 
-178
-179
-180</pre>
+226
+227
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 178</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 226</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ext_order_id'>ext_order_id</span>
   <span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>extOrderId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -340,18 +383,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>new order id</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-174
-175
-176</pre>
+222
+223
+224</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 174</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 222</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_order_id'>order_id</span>
   <span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>orderId</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -370,18 +424,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>response status</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-170
-171
-172</pre>
+217
+218
+219</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 217</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_status'>status</span>
   <span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>status</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -403,6 +468,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>checks if response has success status</p>
+
 
   </div>
 </div>
@@ -428,12 +495,12 @@
       <pre class="lines">
 
 
-182
-183
-184</pre>
+231
+232
+233</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 182</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 231</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_success?'>success?</span>
   <span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>status</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>statusCode</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='const'><span class='object_link'><a href="#SUCCESS_STATUS-constant" title="Payu::Payment::Response::SUCCESS_STATUS (constant)">SUCCESS_STATUS</a></span></span>
@@ -452,18 +519,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>url which will be used by user to pay for order</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-166
-167
-168</pre>
+212
+213
+214</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 166</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 212</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_url'>url</span>
   <span class='id identifier rubyid_body'>body</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>redirectUri</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
@@ -478,7 +556,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

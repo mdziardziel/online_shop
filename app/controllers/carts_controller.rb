@@ -1,11 +1,12 @@
 class CartsController < ApplicationController
-  MAXIMUM_PRODUCTS_PER_ORDER = 15
+  # GET /carts
   def index
     cart
   end
 
   private
 
+  # prepares cart
   def cart
     cart_hash = JSON.parse(cookies['cart'].presence || '{}')
     cart_tmp = cart_hash.map { |id, quantity| [Product.find(id), quantity.to_i] }

@@ -136,7 +136,31 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>GET /products GET /products.json.</p>
+<p>GET /products.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#set_product-instance_method" title="#set_product (instance method)">#<strong>set_product</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets product.</p>
 </div></span>
   
 </li>
@@ -160,7 +184,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>GET /products/1 GET /products/1.json.</p>
+<p>GET /products/1.</p>
 </div></span>
   
 </li>
@@ -176,6 +200,11 @@
   
   
   
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#back_to_cart-instance_method" title="ApplicationController#back_to_cart (method)">#back_to_cart</a></span>, <span class='object_link'><a href="ApplicationController.html#basic_auth_disabled-instance_method" title="ApplicationController#basic_auth_disabled (method)">#basic_auth_disabled</a></span>, <span class='object_link'><a href="ApplicationController.html#categories-instance_method" title="ApplicationController#categories (method)">#categories</a></span></p>
+
   
 
   <div id="instance_method_details" class="method_details_list">
@@ -194,7 +223,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>GET /products GET /products.json</p>
+<p>GET /products</p>
 
 
   </div>
@@ -208,17 +237,58 @@
       <pre class="lines">
 
 
+5
 6
 7
-8
-9</pre>
+8</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='ivar'>@products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_kept'>kept</span><span class='period'>.</span><span class='id identifier rubyid_order'>order</span><span class='lparen'>(</span><span class='symbol'>:name</span><span class='rparen'>)</span>
   <span class='ivar'>@products</span> <span class='op'>=</span> <span class='ivar'>@products</span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>category:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:category</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='kw'>if</span>  <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:category</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_present?'>present?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_product-instance_method">
+  
+    #<strong>set_product</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets product</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 16</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_product'>set_product</span>
+  <span class='ivar'>@product</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -237,7 +307,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>GET /products/1 GET /products/1.json</p>
+<p>GET /products/1</p>
 
 
   </div>
@@ -251,11 +321,11 @@
       <pre class="lines">
 
 
-13
-14</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/products_controller.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
 <span class='kw'>end</span></pre>
@@ -269,7 +339,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:29 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

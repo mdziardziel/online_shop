@@ -99,7 +99,24 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>fetches authorization token from <code>Payu</code> </p>
 
+<p>authorizes using CLIENT_ID and CLIENT_SECRET variables from env</p>
+
+<p>You can find more informations about <code>Payu</code> authorization here <a href="http://developers.payu.com/pl/restapi.html#references_api_signature">developers.payu.com/pl/restapi.html#references_api_signature</a></p>
+
+<p>Compatible <code>Payu</code> API version: <strong>2.1</strong></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
   
     <h2>
       Constant Summary
@@ -109,12 +126,34 @@
     <dl class="constants">
       
         <dt id="OVERLAP_SECS-constant" class="">OVERLAP_SECS =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>number of seconds margin for generating new authorization token</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='int'>10</span></pre></dd>
       
         <dt id="PAYU_AUTH_URI-constant" class="">PAYU_AUTH_URI =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>authorization link</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://secure.snd.payu.com/pl/standard/user/oauth/authorize</span><span class='tstring_end'>&#39;</span></span><span class='period'>.</span><span class='id identifier rubyid_freeze'>freeze</span></pre></dd>
       
@@ -152,7 +191,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>at first use creates new token.</p>
+</div></span>
   
 </li>
 
@@ -183,7 +224,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>generates new token if old one expires.</p>
+</div></span>
   
 </li>
 
@@ -208,7 +251,151 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>A new instance of AuthorizationToken.</p>
+<p>set request body and generates new token.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#refresh_token!-instance_method" title="#refresh_token! (instance method)">#<strong>refresh_token!</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>fetches new fresh authorization token.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#request-instance_method" title="#request (instance method)">#<strong>request</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>initializes request object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#request_options-instance_method" title="#request_options (instance method)">#<strong>request_options</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>sets http protocol.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#response-instance_method" title="#response (instance method)">#<strong>response</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>fetches response.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#token_outdated%3F-instance_method" title="#token_outdated? (instance method)">#<strong>token_outdated?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>checks if authorization token expired.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#uri-instance_method" title="#uri (instance method)">#<strong>uri</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>creates uri object from string uri.</p>
 </div></span>
   
 </li>
@@ -232,7 +419,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of AuthorizationToken</p>
+<p>set request body and generates new token</p>
 
 
   </div>
@@ -246,18 +433,18 @@
       <pre class="lines">
 
 
-110
-111
-112
-113
-114
-115
-116
-117
-118</pre>
+144
+145
+146
+147
+148
+149
+150
+151
+152</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 144</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_set_form_data'>set_form_data</span><span class='lparen'>(</span>
@@ -289,19 +476,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>at first use creates new token</p>
+
+<p>creates new token when old one expires</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-105
-106
-107
-108</pre>
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 138</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span>
   <span class='cvar'>@@token</span> <span class='op'>||=</span> <span class='id identifier rubyid_new'>new</span>
@@ -327,23 +527,303 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>generates new token if old one expires</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-120
-121
-122
-123</pre>
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 120</span>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_call'>call</span>
   <span class='id identifier rubyid_refresh_token!'>refresh_token!</span> <span class='kw'>if</span> <span class='id identifier rubyid_token_outdated?'>token_outdated?</span>
   <span class='ivar'>@token</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="refresh_token!-instance_method">
+  
+    #<strong>refresh_token!</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>fetches new fresh authorization token</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171
+172
+173</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_refresh_token!'>refresh_token!</span>
+  <span class='ivar'>@created_at</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+  <span class='id identifier rubyid_json_response'>json_response</span> <span class='op'>=</span> <span class='const'>JSON</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='id identifier rubyid_response'>response</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='rparen'>)</span>
+  <span class='ivar'>@expires_in</span> <span class='op'>=</span> <span class='id identifier rubyid_json_response'>json_response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>expires_in</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='ivar'>@token</span> <span class='op'>=</span> <span class='id identifier rubyid_json_response'>json_response</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>access_token</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="request-instance_method">
+  
+    #<strong>request</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>initializes request object</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+186
+187
+188</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 186</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_request'>request</span>
+  <span class='ivar'>@request</span> <span class='op'>||=</span> <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='op'>::</span><span class='const'>Post</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="request_options-instance_method">
+  
+    #<strong>request_options</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>sets http protocol</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+181
+182
+183</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 181</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_request_options'>request_options</span>
+  <span class='lbrace'>{</span> <span class='label'>use_ssl:</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_scheme'>scheme</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>https</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="response-instance_method">
+  
+    #<strong>response</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>fetches response</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+191
+192
+193
+194
+195</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 191</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_response'>response</span>
+  <span class='const'>Net</span><span class='op'>::</span><span class='const'>HTTP</span><span class='period'>.</span><span class='id identifier rubyid_start'>start</span><span class='lparen'>(</span><span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_hostname'>hostname</span><span class='comma'>,</span> <span class='id identifier rubyid_uri'>uri</span><span class='period'>.</span><span class='id identifier rubyid_port'>port</span><span class='comma'>,</span> <span class='id identifier rubyid_request_options'>request_options</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_http'>http</span><span class='op'>|</span>
+    <span class='id identifier rubyid_http'>http</span><span class='period'>.</span><span class='id identifier rubyid_request'>request</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="token_outdated?-instance_method">
+  
+    #<strong>token_outdated?</strong>  &#x21d2; <tt>Boolean</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>checks if authorization token expired</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+163
+164
+165</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 163</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_token_outdated?'>token_outdated?</span>
+  <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&gt;=</span> <span class='ivar'>@created_at</span> <span class='op'>+</span> <span class='ivar'>@expires_in</span> <span class='op'>-</span> <span class='const'><span class='object_link'><a href="#OVERLAP_SECS-constant" title="Payu::Payment::AuthorizationToken::OVERLAP_SECS (constant)">OVERLAP_SECS</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="uri-instance_method">
+  
+    #<strong>uri</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>creates uri object from string uri</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+176
+177
+178</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/payu/payment.rb', line 176</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_uri'>uri</span>
+  <span class='ivar'>@uri</span> <span class='op'>||=</span> <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="#PAYU_AUTH_URI-constant" title="Payu::Payment::AuthorizationToken::PAYU_AUTH_URI (constant)">PAYU_AUTH_URI</a></span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -355,7 +835,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:28 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

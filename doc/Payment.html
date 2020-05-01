@@ -103,7 +103,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>payment model</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
   
     <h2>
       Constant Summary
@@ -138,7 +149,18 @@
         <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>requested</span><span class='tstring_end'>&#39;</span></span></pre></dd>
       
         <dt id="STATUSES-constant" class="">STATUSES =
-          
+          <div class="docstring">
+  <div class="discussion">
+    
+<p>payment allowed statuses</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
         </dt>
         <dd><pre class="code"><span class='lbracket'>[</span><span class='const'><span class='object_link'><a href="#COMPLETED_STATUS-constant" title="Payment::COMPLETED_STATUS (constant)">COMPLETED_STATUS</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#PENDING_STATUS-constant" title="Payment::PENDING_STATUS (constant)">PENDING_STATUS</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#CANCELLED_STATUS-constant" title="Payment::CANCELLED_STATUS (constant)">CANCELLED_STATUS</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#WAITING_STATUS-constant" title="Payment::WAITING_STATUS (constant)">WAITING_STATUS</a></span></span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="#REQUESTED_STATUS-constant" title="Payment::REQUESTED_STATUS (constant)">REQUESTED_STATUS</a></span></span><span class='rbracket'>]</span></pre></dd>
       
@@ -176,7 +198,57 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>cancels user payment.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#set_status-instance_method" title="#set_status (instance method)">#<strong>set_status</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>set order status after database record creation as reserved.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#update_order_status-instance_method" title="#update_order_status (instance method)">#<strong>update_order_status</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>updates order status to paid when payment is completed.</p>
+</div></span>
   
 </li>
 
@@ -206,23 +278,124 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>cancels user payment</p>
+
+<p>unblocks user payment button and allows to pay second time</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-18
-19
-20
-21</pre>
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/payment.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'app/models/payment.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cancel'>cancel</span>
   <span class='comment'># TODO call provider api to cancel payments
 </span>  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_update!'>update!</span><span class='lparen'>(</span><span class='label'>status:</span> <span class='const'><span class='object_link'><a href="#CANCELLED_STATUS-constant" title="Payment::CANCELLED_STATUS (constant)">CANCELLED_STATUS</a></span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="set_status-instance_method">
+  
+    #<strong>set_status</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>set order status after database record creation as reserved</p>
+
+<p>means that payment record has been createn, but payu payemnt didn&#39;t start yet</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/payment.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_set_status'>set_status</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_status'>status</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="#REQUESTED_STATUS-constant" title="Payment::REQUESTED_STATUS (constant)">REQUESTED_STATUS</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_order_status-instance_method">
+  
+    #<strong>update_order_status</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>updates order status to paid when payment is completed</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+39
+40
+41
+42
+43</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/payment.rb', line 39</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_order_status'>update_order_status</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_previous_changes'>previous_changes</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>status</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='op'>&amp;.</span><span class='id identifier rubyid_second'>second</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="#COMPLETED_STATUS-constant" title="Payment::COMPLETED_STATUS (constant)">COMPLETED_STATUS</a></span></span>
+
+  <span class='id identifier rubyid_order'>order</span><span class='period'>.</span><span class='id identifier rubyid_update!'>update!</span><span class='lparen'>(</span><span class='label'>status:</span> <span class='const'><span class='object_link'><a href="Order.html" title="Order (class)">Order</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Order.html#PAID_STATUS-constant" title="Order::PAID_STATUS (constant)">PAID_STATUS</a></span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -234,7 +407,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 21:36:01 2020 by
+  Generated on Fri May  1 23:11:29 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>
