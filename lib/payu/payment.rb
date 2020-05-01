@@ -62,7 +62,7 @@ module Payu
     def set_body
       request.body = JSON.dump({
         'notifyUrl' => "#{ENV['URL']}#{NOTIFY_PATH}",
-        'continueUrl' => "#{ENV['URL']}#{ORDERS_PATH}/#{payment.order.token}"
+        'continueUrl' => "#{ENV['URL']}#{ORDERS_PATH}/#{payment.order.token}",
         'customerIp' => customer_ip,
         'merchantPosId' => ENV['CLIENT_ID'],
         'description' => DESCRIPTION,
