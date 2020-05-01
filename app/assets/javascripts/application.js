@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require material
 //= require turbolinks
+//= require cookies_eu
 //= require_tree .
 
 
