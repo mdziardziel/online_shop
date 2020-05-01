@@ -1,3 +1,5 @@
+  ##
+# join table model for products and orders
 class ProductOrder < ApplicationRecord
   self.table_name = 'products_orders'
 
