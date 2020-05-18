@@ -1,6 +1,5 @@
 # README
 
-to generate active admin panel for MyModelName
 ```
 
 ## Link do aplikacji
