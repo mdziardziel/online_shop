@@ -39,7 +39,7 @@ https://online-shop-ecommerce-put.herokuapp.com/doc/index.html
 #### integracja z payu 
 https://online-shop-ecommerce-put.herokuapp.com/doc/Payu/Payment.html
 ### Diagram związków encji 
-![diagram](https://online-shop-ecommerce-put.herokuapp.com/doc/erd.png)
+![diagram](https://online-shop-ecommerce-put.herokuapp.com/erd.png)
 https://online-shop-ecommerce-put.herokuapp.com/doc/erd.pdf
 
 
