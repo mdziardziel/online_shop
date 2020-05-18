@@ -5,7 +5,7 @@ ActiveAdmin.register Payment do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :order_id, :buyer, :provider_data, :status, :amount
+  permit_params :order_id, :buyer, :provider_data, :status, :amount
   #
   # or
   #
