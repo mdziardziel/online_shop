@@ -7,11 +7,11 @@ class OrdersController < ApplicationController
 
   # POST /orders
   #
-  # creates new join records between order and products
+  # tworzy zamówenie
   # 
-  # reduces products quantity
+  # redukuje liczbę produktów o zamówione produkty
   #
-  # resets cart
+  # resetuje koszyk
   def create
     products = Product.where(id: order_params.keys)
     total_amount = 0
@@ -43,17 +43,17 @@ class OrdersController < ApplicationController
   end
 
   private
-    # sets order by token
+    # ustawia zamówienie po tokenie
     def set_order
       @order = Order.find_by(token: params[:id])
     end
 
-    #requires products in request body
+    # pobiera parametry zapytania
     def order_params
       params.require(:products)
     end
 
-    # reduce the quantity of products by number of ordered products
+    # redukuje liczbę produktów
     def update_products_quantity
       @order.products_orders.each do |po|
         product = po.product

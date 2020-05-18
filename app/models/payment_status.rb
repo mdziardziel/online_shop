@@ -8,7 +8,7 @@ module Payu
     CANCELED = 'CANCELED'
     STATUSES = [PENDING, WAITING_FOR_CONFIRMATION, COMPLETED, CANCELED]
 
-    # payu statuses mapped to payment statuses defined in application
+    # zmapowane statusy płatności Payu na statusy użyte w aplikacji
     STATUS_MAP = {
       PENDING => Payment::PENDING_STATUS,
       WAITING_FOR_CONFIRMATION => Payment::WAITING_STATUS,
@@ -16,7 +16,7 @@ module Payu
       CANCELED => Payment::CANCELLED_STATUS
     }
 
-    # converts payu statuses mapped to payment statuses defined in application
+    # konwertuje zmapowane statusy płatności Payu na statusy użyte w aplikacji
     def self.convert(status)
       STATUS_MAP[status]
     end

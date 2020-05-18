@@ -184,7 +184,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>checks status of payments associated and returns status.</p>
+<p>sprawdza status wszystkich płatności danego zamówienia i zwraca jeden wspólny status.</p>
 </div></span>
   
 </li>
@@ -208,7 +208,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>set order status after database record creation as reserved.</p>
+<p>po stworzeniu zamówienia ustala status jako reserved.</p>
 </div></span>
   
 </li>
@@ -232,7 +232,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>generates new, uniq order token which will be used by user to find order.</p>
+<p>generuje nowy unikalny token który będzie jednoznacznie identyfikował zamówienie.</p>
 </div></span>
   
 </li>
@@ -266,15 +266,15 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>checks status of payments associated and returns status</p>
+<p>sprawdza status wszystkich płatności danego zamówienia i zwraca jeden wspólny status</p>
 
-<p>if at least one payment has completed status, then returns completed</p>
+<p>jeśli co najmniej jedna płatność jest zakończona, wtedy zwraca statuc completed</p>
 
-<p>if no one payment has completed and at least one has pending status, then returns pending</p>
+<p>jeśli żadna płatność nie jest zakończona i co najmniej jedna oczekująca, wtedy zwraca status pending</p>
 
-<p>if no one payment has completed or pending and at least one has cancelled status, then returns cancelled</p>
+<p>jeśli żadna płatność nie jest zakończona lub oczekująca i co najmniej jedna jest anulowana, wtedy zwraca status cancelled</p>
 
-<p>if no one payment has completed or pending or cancelled status, then returns  nt started status</p>
+<p>jeśli żadna płatność nie jest zakończona lub oczekująca lub anulowana wtedy zwraca status not started</p>
 
 
   </div>
@@ -323,9 +323,9 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>set order status after database record creation as reserved</p>
+<p>po stworzeniu zamówienia ustala status jako reserved</p>
 
-<p>means that user didn&#39;t pay for items, he just reseverd them</p>
+<p>oznacza, że klient zamówił produkty, ale jeszcze nie dokonał płatności</p>
 
 
   </div>
@@ -366,7 +366,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>generates new, uniq order token which will be used by user to find order</p>
+<p>generuje nowy unikalny token który będzie jednoznacznie identyfikował zamówienie</p>
 
 
   </div>
@@ -408,7 +408,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 23:11:29 2020 by
+  Generated on Mon May 18 20:01:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

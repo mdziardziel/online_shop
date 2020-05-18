@@ -123,28 +123,6 @@
         <li class="private ">
   <span class="summary_signature">
     
-      <a href="#back_to_cart-instance_method" title="#back_to_cart (instance method)">#<strong>back_to_cart</strong>  &#x21d2; Object </a>
-    
-
-    
-  </span>
-  
-  
-  
-  <span class="note title private">private</span>
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="private ">
-  <span class="summary_signature">
-    
       <a href="#basic_auth_disabled-instance_method" title="#basic_auth_disabled (instance method)">#<strong>basic_auth_disabled</strong>  &#x21d2; Object </a>
     
 
@@ -197,45 +175,7 @@
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="back_to_cart-instance_method">
-  
-    #<strong>back_to_cart</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-18
-19
-20
-21
-22
-23
-24</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 18</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_back_to_cart'>back_to_cart</span>
-  <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_referer'>referer</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://merch-prod.snd.payu.com/simulator/spring/web/blikweb/transaction/transaction_init/auth</span><span class='tstring_end'>&#39;</span></span>
-  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_cookies'>cookies</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>last_order_token</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-
-  <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_order_path'>order_path</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_cookies'>cookies</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>last_order_token</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='kw'>return</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="basic_auth_disabled-instance_method">
+  <h3 class="signature first" id="basic_auth_disabled-instance_method">
   
     #<strong>basic_auth_disabled</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
   
@@ -249,12 +189,12 @@
       <pre class="lines">
 
 
-14
-15
-16</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_basic_auth_disabled'>basic_auth_disabled</span>
   <span class='id identifier rubyid_controller_name'>controller_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>payments</span><span class='tstring_end'>&#39;</span></span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_action_name'>action_name</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>provider_notify</span><span class='tstring_end'>&#39;</span></span>
@@ -279,12 +219,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/application_controller.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_categories'>categories</span>
   <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_kept'>kept</span><span class='period'>.</span><span class='id identifier rubyid_pluck'>pluck</span><span class='lparen'>(</span><span class='symbol'>:category</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span><span class='period'>.</span><span class='id identifier rubyid_uniq'>uniq</span>
@@ -299,7 +239,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 23:11:29 2020 by
+  Generated on Mon May 18 20:01:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

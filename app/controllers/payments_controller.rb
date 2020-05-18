@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments
   #
-  # creates new payment for order
+  # tworzy nowy rekord płatności
   def create
     @order = Order.find_by(token: params[:payment][:order_token])
     @payment = Payment.new(buyer: payment_params[:buyer], order: @order, amount: @order.amount)
@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments/cancel
   #
-  # cancels payment, allows user to start new one
+  # anuluje płatność, zezwala użytkownikowi na ponowienie płatności
   def cancel
     order = Order.find_by(token: params[:order_token])
     order.payments.each(&:cancel)
@@ -35,11 +35,7 @@ class PaymentsController < ApplicationController
 
   # POST /payments/provider_notify
   #
-  # gets notifications from payment provider about payment status change
-  #
-  # checks authenticity of request
-  #
-  # returns 200 status
+  # endpoint odbierający powiadomienia od Payu
   def provider_notify
     RequestAuthenticityChecker.call!(request)
 
@@ -53,26 +49,24 @@ class PaymentsController < ApplicationController
   end
 
   private
-    # sets payment by id
+    # wyszukuje płatność po id
     def set_payment
       @payment = Payment.find(params[:id])
     end
 
-    # returns creation permitted params
+    # zwraca parametry zapytania
     def payment_params
       params.require(:payment).permit(buyer: %i(first_name last_name phone_number email))
     end
 
-    # created new payu payment instance
+    # tworzy nową instancję klasy Payu::Payment
     def payu_payment
       @payu_payment ||= ::Payu::Payment.new(@payment)
     end
 
-    # requests for payu order
+    # odpytuje Payu i zwraca link pod który będzie przekierowany użytkownik
     #
-    # gets redirect url
-    #
-    # updates payment with data returned by request
+    # aktualizuje rekord payment w bazie danych
     def process_payment
       if payu_payment.response.success?
         @redirect_url = payu_payment.response.url
@@ -87,7 +81,7 @@ class PaymentsController < ApplicationController
     end
 
       ##
-    # checks if request is authentic request from whitelisted providers
+    # sprawdza czy zapytanie zostało wykonane z odpowiedniego adresu ip
     class RequestAuthenticityChecker
       # whitelisted payu ips
       WHITELISTED_IPS = %w(185.68.14.10 185.68.14.11 185.68.14.12 185.68.14.26 185.68.14.27 185.68.14.28)
@@ -102,24 +96,24 @@ class PaymentsController < ApplicationController
         new(request).call!
       end
 
-      # returns true if request is authentic
+      # sprawdza czy zapytanie jest autentyczne
       def call
         ip_trusted? && signature_verified?
       end
 
-      # raises exception if request is not authentic
+      # wywołuje błąd jeśli zapytanie nie jest autentyczne
       def call!
         raise 'request not authentic' unless ip_trusted? && signature_verified?
       end
 
       private
 
-      # checks if ip is trusted
+      # sprawdza czy ip jest zaufane
       def ip_trusted?
         WHITELISTED_IPS.include?(request.remote_ip)
       end
 
-      # verifies signature from x-openpayu-signature header
+      # weryfikuje podpis z nagłówka x-openpayu-signature
       def signature_verified?
         # TODO check if request comes from payu by checking x-openpayu-signature header
         true

@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
   end
 
   private
-    # sets product
+    # ustawia produkt
     def set_product
       @product = Product.find(params[:id])
     end

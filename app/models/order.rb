@@ -18,15 +18,15 @@ class Order < ApplicationRecord
 
   before_validation :set_status, :set_token, on: :create
 
-  # checks status of payments associated and returns status
+  # sprawdza status wszystkich płatności danego zamówienia i zwraca jeden wspólny status
   #
-  # if at least one payment has completed status, then returns completed
+  # jeśli co najmniej jedna płatność jest zakończona, wtedy zwraca statuc completed
   #
-  # if no one payment has completed and at least one has pending status, then returns pending
+  # jeśli żadna płatność nie jest zakończona i co najmniej jedna oczekująca, wtedy zwraca status pending
   #
-  # if no one payment has completed or pending and at least one has cancelled status, then returns cancelled
+  # jeśli żadna płatność nie jest zakończona lub oczekująca i co najmniej jedna jest anulowana, wtedy zwraca status cancelled
   #
-  # if no one payment has completed or pending or cancelled status, then returns  nt started status
+  # jeśli żadna płatność nie jest zakończona lub oczekująca lub anulowana wtedy zwraca status not started
   def payment_status
     return Payment::COMPLETED_STATUS if Payment.find_by(order_id: id, status: Payment::COMPLETED_STATUS)
     return Payment::PENDING_STATUS if Payment.find_by(order_id: id, status: Payment::PENDING_STATUS)
@@ -37,14 +37,14 @@ class Order < ApplicationRecord
 
   private
 
-  # set order status after database record creation as reserved
+  # po stworzeniu zamówienia ustala status jako reserved
   #
-  # means that user didn't pay for items, he just reseverd them
+  # oznacza, że klient zamówił produkty, ale jeszcze nie dokonał płatności
   def set_status
     self.status = RESERVED_STATUS
   end
 
-  # generates new, uniq order token which will be used by user to find order
+  # generuje nowy unikalny token który będzie jednoznacznie identyfikował zamówienie
   def set_token
     random_token = SecureRandom.alphanumeric(32)
     while Order.find_by(token: random_token).present? do

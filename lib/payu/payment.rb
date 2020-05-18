@@ -1,10 +1,10 @@
 module Payu
     ##
-  # Requests +Payu+ for a new order
+  # wysyła zapytanie do +Payu+ o nowe zamówienie
   #
-  # You can find more informations about +Payu+ API here http://developers.payu.com/pl/restapi.html
+  # Więcej informacji o +Payu+ API można znaleźć tutaj http://developers.payu.com/pl/restapi.html
   #
-  # Compatible +Payu+ API version: *2.1*
+  # Kompatybilna wersja +Payu+ API: *2.1*
   class Payment
     require 'net/http'
     require 'uri'
@@ -13,24 +13,24 @@ module Payu
     # Payu  OrderCreateRequest endpoint (sandbox)
     PAYU_URI = 'https://secure.snd.payu.com/api/v2_1/orders'.freeze
     CONTENT_TYPE_HEADER = 'application/json'.freeze
-    # application endpoint which will be notified by Payu about order status change
+    # endpoint aplikacji który będzie informowany o zmianie statusu zamówienia
     NOTIFY_PATH = "/payments/provider_notify".freeze
-    # orders path
+    # ścieżka zamówienia
     ORDERS_PATH = "/orders".freeze
-    # shop description
+    # opis sklepu
     DESCRIPTION = 'Online shop'.freeze
-    # currency used in transaction
+    # waluta użyta w transakcji
     CURRENCY_CODE = 'PLN'.freeze
-    # used in sandbox mode to disable invoices creation
+    # używane w sandboxie do wyłączenia faktur
     INVOICE_DISABLED = 'true'.freeze
-    # order request protocol
+    # protokół
     PROTOCOL = 'https'
-    # user's language
+    # język użytkownika
     LANGUAGE = 'pl'
   
     attr_private :payment
   
-    # initializes headers and body of request
+    # inicjalizuje ciało i nagłówki zapytania
     def initialize(payment)
       @payment = payment
   
@@ -38,27 +38,27 @@ module Payu
       set_body
     end
   
-    # decorated response
+    # dekoruje odpowiedź
     def response
       @response ||= Response.new(Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
         http.request(request)
       end)
     end
   
-    # order creation request
+    # zapytanie o stworzenie zamówienia
     def request
       @request ||= Net::HTTP::Post.new(uri)
     end
   
     private
     
-    # sets headers required by OrderCreateRequest
+    # ustawia nagłówki wymagane przez OrderCreateRequest
     def set_headers
       request.content_type = CONTENT_TYPE_HEADER
       request['Authorization'] = "Bearer #{AuthorizationToken.call}"
     end
   
-    # sets body required by OrderCreateRequest
+    # ustawia ciało wymagane przez OrderCreateRequest
     def set_body
       request.body = JSON.dump({
         'notifyUrl' => "#{ENV['URL']}#{NOTIFY_PATH}",
@@ -76,14 +76,14 @@ module Payu
       })
     end
   
-    # sets http protocol
+    # ustawia protokół
     def req_options
       {
         use_ssl: uri.scheme == PROTOCOL
       }
     end
   
-    # returns hash with products ordered by customer
+    # zwraca hash z zamówionymi produktami
     def products
       @payment.order.products_orders.map do |product_order|
         {
@@ -94,7 +94,7 @@ module Payu
       end
     end
   
-    # returns informations about customer
+    # zwraca informacje o kliencie
     def buyer
       @buyer ||= {
         "email" => payment.buyer['email'],
@@ -105,45 +105,45 @@ module Payu
       }
     end
   
-    # converts amount to format accepted by payu
+    # konwertuje cenę do formatu akceptowanego przez payu
     def total_amount
       (payment.amount * 100).to_i
     end
   
-    # creates uri object from string uri
+    # tworzy obiekt uri
     def uri
       @uri ||= URI.parse(PAYU_URI)
     end
 
-    # returns customer ip, currently harcoded 
+    # zwraca ip klienta
     def customer_ip
       # TODO return real customer's ip
       '127.0.0.1'
     end
 
           ##
-    # fetches authorization token from +Payu+ 
+    # pobiera token autoryzacyjny z +Payu+ 
     #
-    # authorizes using CLIENT_ID and CLIENT_SECRET variables from env
+    # autoryzuje przy użyciu CLIENT_ID i CLIENT_SECRET zapisanych w zmiennych środowiskowych
     #
-    # You can find more informations about +Payu+ authorization here http://developers.payu.com/pl/restapi.html#references_api_signature
+    # Więcej informacji o autoryzacji +Payu+  http://developers.payu.com/pl/restapi.html#references_api_signature
     #
-    # Compatible +Payu+ API version: *2.1*
+    # Kompatybilne z +Payu+ API w wersji: *2.1*
     class AuthorizationToken
-      # number of seconds margin for generating new authorization token
+      # liczba sekund, o ile wcześniej pobiermay token
       OVERLAP_SECS = 10
-      # authorization link
+      # link do autoryzacji
       PAYU_AUTH_URI = 'https://secure.snd.payu.com/pl/standard/user/oauth/authorize'.freeze
 
-      # at first use creates new token
+      # przy pierwszym wywołaniu pobierany jest nowy token
       #
-      # creates new token when old one expires
+      # tworzy nowy token kiedy stary się przedawni
       def self.call
         @@token ||= new
         @@token.call
       end
 
-      # set request body and generates new token
+      # ustawia ciało zapytania i generuje nowy token
       def initialize
         request.set_form_data(
           "client_id" => ENV['CLIENT_ID'],
@@ -154,7 +154,7 @@ module Payu
         refresh_token!
       end
 
-      # generates new token if old one expires
+      # generuje nowy token jeśli stary się przedawni
       def call
         refresh_token! if token_outdated?
         @token
@@ -162,12 +162,12 @@ module Payu
 
       private
 
-      # checks if authorization token expired
+      # sprawdza czy token się przedawnił
       def token_outdated?
         Time.now >= @created_at + @expires_in - OVERLAP_SECS
       end
 
-      # fetches new fresh authorization token
+      # pobiera nowy token
       def refresh_token!
         @created_at = Time.now
         json_response = JSON.parse(response.body)
@@ -175,22 +175,22 @@ module Payu
         @token = json_response['access_token']
       end
 
-      # creates uri object from string uri
+      # tworzy obiekt uri
       def uri
         @uri ||= URI.parse(PAYU_AUTH_URI)
       end
 
-      # sets http protocol
+      # ustawia protokół http
       def request_options
         { use_ssl: uri.scheme == "https" }
       end
 
-      # initializes request object
+      # inicjalizuje obiekt zapytania
       def request
         @request ||= Net::HTTP::Post.new(uri)
       end
 
-      # fetches response
+      # fpobiera odpowiedź
       def response
         Net::HTTP.start(uri.hostname, uri.port, request_options) do |http|
           http.request(request)
@@ -199,29 +199,29 @@ module Payu
     end
   
           ##
-    # decorates payu order response
+    # dekoruje odpowiedź na zapytanie o zamówienie z payu
     class Response
-      # success response status
+      # status sukces odpowiedzi
       SUCCESS_STATUS = 'SUCCESS'.freeze
   
       pattr_initialize :response
   
-      # json parsed body
+      # ciało w jsonie
       def body
         JSON.parse(response.body)
       end
   
-      # url which will be used by user to pay for order
+      # url który będzie użyty przez klienta do opłacenia zamówienia
       def url
         body['redirectUri']
       end
     
-      # response status
+      # status odpowiedzi
       def status
         body['status']
       end
     
-      # new order id
+      # id zamówienia
       def order_id
         body['orderId']
       end
@@ -230,7 +230,7 @@ module Payu
         body['extOrderId']
       end
   
-      # checks if response has success status
+      # sprawdza status odpoweidzi
       def success?
         body['status']['statusCode'] == SUCCESS_STATUS
       end

@@ -6,7 +6,7 @@ class CartsController < ApplicationController
 
   private
 
-  # prepares cart
+  # przygotowanie koszyka
   def cart
     cart_hash = JSON.parse(cookies['cart'].presence || '{}')
     cart_tmp = cart_hash.map { |id, quantity| [Product.find(id), quantity.to_i] }

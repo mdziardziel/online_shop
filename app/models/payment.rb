@@ -6,7 +6,7 @@ class Payment < ApplicationRecord
   CANCELLED_STATUS = 'cancelled'
   WAITING_STATUS = 'waiting_for_confirmation'
   REQUESTED_STATUS = 'requested'
-  # payment allowed statuses
+  # statusy płatności
   STATUSES = [COMPLETED_STATUS, PENDING_STATUS, CANCELLED_STATUS, WAITING_STATUS, REQUESTED_STATUS]
 
 
@@ -18,9 +18,9 @@ class Payment < ApplicationRecord
   before_validation :set_status, on: :create
   after_update :update_order_status
 
-  # cancels user payment
+  # anuluje płatność
   #
-  # unblocks user payment button and allows to pay second time
+  # pozwala na ponowienie płatności
   def cancel
     # TODO call provider api to cancel payments
     self.update!(status: CANCELLED_STATUS)
@@ -28,14 +28,14 @@ class Payment < ApplicationRecord
   
   private 
 
-  # set order status after database record creation as reserved
+  # ustawia status płatności zaraz po stworzeniu rekordu
   #
-  # means that payment record has been createn, but payu payemnt didn't start yet
+  # oznacza, że płatność payu jeszcze się nie rozpoczęła
   def set_status
     self.status = REQUESTED_STATUS
   end
 
-  # updates order status to paid when payment is completed
+  # aktualizuje status zamównia jako paid gdy zamówienie zostanie opłacone
   def update_order_status
     return if previous_changes['status']&.second != COMPLETED_STATUS
 
