@@ -60,65 +60,50 @@
       <div id="content"><div id='filecontents'>
 <h1 id="label-README">README</h1>
 
-<pre class="code ruby"><code class="ruby">
-## Link do aplikacji
-https://online-shop-ecommerce-put.herokuapp.com
+<h2 id="label-Link+do+aplikacji">Link do aplikacji</h2>
 
-### Basic Auth
-login &#39;poznanuniversity&#39;, hasło &#39;oftechnology&#39;.
+<p><a href="https://online-shop-ecommerce-put.herokuapp.com">online-shop-ecommerce-put.herokuapp.com</a></p>
 
-### Panel administratora
-https://online-shop-ecommerce-put.herokuapp.com/admin
-User: admin@example.com
-Password: password
+<h3 id="label-Basic+Auth">Basic Auth</h3>
 
+<p>login &#39;poznanuniversity&#39;, hasło &#39;oftechnology&#39;.</p>
 
-## Repozytorium git
-https://github.com/mdziardziel/online_shop
+<h3 id="label-Panel+administratora">Panel administratora</h3>
 
+<p><a href="https://online-shop-ecommerce-put.herokuapp.com/admin">online-shop-ecommerce-put.herokuapp.com/admin</a> User: admin@example.com Password: password</p>
 
-## Technologie
-Aplikacja została napisana w języku Ruby z pomocą frameworka RubyOnRails. Front-end jest generowany także przez RubyOnRails, dodatkowo wykorzystałem JavaScript, Jquery, sass oraz bootstrapa z nakładką material design http://daemonite.github.io/material/docs/4.1/getting-started/introduction/ .
-Aplikacja została wdrożona z użyciem heroku.
+<h2 id="label-Repozytorium+git">Repozytorium git</h2>
 
+<p><a href="https://github.com/mdziardziel/online_shop">github.com/mdziardziel/online_shop</a></p>
 
-## Działanie aplikacji
-Sklep posiada zintegrowane płatności z payu. Kluczowa klasa, która odpowiada za integrację serwisu z PayU https://github.com/mdziardziel/online_shop/blob/master/lib/payu/payment.rb
-Po lewej stronie mamy możliwość wyboru kategorii produktów które nam się wyświetlą.
-Po dodaniu produktu do koszyka możemy w górnym prawym rogu przejść do koszyka lub usunąć z niego wszystkie produkty.
-Po przejściu do koszyka mamy możliwość zmiany liczby wziętych produktów. Widzimy także podsumowanie koszyka, możemy potwierdzić zamówienie klikając order.
-Po zamówieniu produktów widzimy podsumowanie zamówienia (na początku mamy tylko zarezerwowane produkty), status płatności, możemy kliknąć pay i opłacić zamówienia.
-Po rozpoczęciu procesu płatności podajemy swoje dane potrzebne przy płatności. Możemy powrócić do zamówienia lub rozpocząć płatność z Payu.
-Po rozpoczęciu płatności zostaniemy przekierowani na stronę Payu. Po wybraniu płatności blikiem możemy odrzucić albo zrealizować płatność
-Po odrzuceniu płatności powrócimy na stronę zamówienia. Zamówienie będzie w stanie pending, więc możemy albo poczekać chwilę aż Payu wyśle powiadomienie do aplikacji o niepowodzeniu płatności i odświeżyć stronę, albo ręcznie anulować płatność. Po zmianie statusu transakcji na cancelled możemy pononie dokonać płatności.
-Po dokonaniu płatności zostaniemy przekierowani na stronę zamówienia, po odczekaniu chwili i odświeżeniu strony status płatności powinien zmienić się na completed, a status zamówienia na paid. Wtedy też nie będziemy mieli już możliwości dokonać kolejnej zapłaty.
-Zarządzać zawartością sklepu można poprzez panel administratora.
+<h2 id="label-Technologie">Technologie</h2>
 
-## Dokumentacja
-### główny opis aplikacji, struktura
-https://online-shop-ecommerce-put.herokuapp.com/doc/index.html
-#### integracja z payu 
-https://online-shop-ecommerce-put.herokuapp.com/doc/Payu/Payment.html
-### Diagram związków encji 
-![diagram](https://online-shop-ecommerce-put.herokuapp.com/doc/erd.png)
-https://online-shop-ecommerce-put.herokuapp.com/doc/erd.pdf
+<p>Aplikacja została napisana w języku Ruby z pomocą frameworka RubyOnRails. Front-end jest generowany także przez RubyOnRails, dodatkowo wykorzystałem JavaScript, Jquery, sass oraz bootstrapa z nakładką material design <a href="http://daemonite.github.io/material/docs/4.1/getting-started/introduction">daemonite.github.io/material/docs/4.1/getting-started/introduction</a>/ . Aplikacja została wdrożona z użyciem heroku.</p>
 
+<h2 id="label-Dzia-C5-82anie+aplikacji">Działanie aplikacji</h2>
 
+<p>Sklep posiada zintegrowane płatności z payu. Kluczowa klasa, która odpowiada za integrację serwisu z PayU <a href="https://github.com/mdziardziel/online_shop/blob/master/lib/payu/payment.rb">github.com/mdziardziel/online_shop/blob/master/lib/payu/payment.rb</a> Po lewej stronie mamy możliwość wyboru kategorii produktów które nam się wyświetlą. Po dodaniu produktu do koszyka możemy w górnym prawym rogu przejść do koszyka lub usunąć z niego wszystkie produkty. Po przejściu do koszyka mamy możliwość zmiany liczby wziętych produktów. Widzimy także podsumowanie koszyka, możemy potwierdzić zamówienie klikając order. Po zamówieniu produktów widzimy podsumowanie zamówienia (na początku mamy tylko zarezerwowane produkty), status płatności, możemy kliknąć pay i opłacić zamówienia. Po rozpoczęciu procesu płatności podajemy swoje dane potrzebne przy płatności. Możemy powrócić do zamówienia lub rozpocząć płatność z Payu. Po rozpoczęciu płatności zostaniemy przekierowani na stronę Payu. Po wybraniu płatności blikiem możemy odrzucić albo zrealizować płatność Po odrzuceniu płatności powrócimy na stronę zamówienia. Zamówienie będzie w stanie pending, więc możemy albo poczekać chwilę aż Payu wyśle powiadomienie do aplikacji o niepowodzeniu płatności i odświeżyć stronę, albo ręcznie anulować płatność. Po zmianie statusu transakcji na cancelled możemy pononie dokonać płatności. Po dokonaniu płatności zostaniemy przekierowani na stronę zamówienia, po odczekaniu chwili i odświeżeniu strony status płatności powinien zmienić się na completed, a status zamówienia na paid. Wtedy też nie będziemy mieli już możliwości dokonać kolejnej zapłaty. Zarządzać zawartością sklepu można poprzez panel administratora.</p>
 
+<h2 id="label-Dokumentacja">Dokumentacja</h2>
 
+<h3 id="label-g-C5-82-C3-B3wny+opis+aplikacji-2C+struktura">główny opis aplikacji, struktura</h3>
 
+<p><a href="https://online-shop-ecommerce-put.herokuapp.com/doc/index.html">online-shop-ecommerce-put.herokuapp.com/doc/index.html</a></p>
 
+<h4 id="label-integracja+z+payu">integracja z payu</h4>
 
-----------------------------------------------------------------------------------------
+<p><a href="https://online-shop-ecommerce-put.herokuapp.com/doc/Payu/Payment.html">online-shop-ecommerce-put.herokuapp.com/doc/Payu/Payment.html</a></p>
 
-generating documentation
-</code></pre>
+<h3 id="label-Diagram+zwi-C4-85zk-C3-B3w+encji">Diagram związków encji</h3>
 
-<p>yardoc –private &#39;lib/*<em>/</em>.rb&#39; &#39;app/controllers/<em>.rb&#39; &#39;app/models/</em>.rb&#39; - README <code> decumentation path </code> /doc/index.html <code> erd  </code> /doc/erd.pdf “`</p>
+<p><img src="https://online-shop-ecommerce-put.herokuapp.com/doc/erd.png"> <a href="https://online-shop-ecommerce-put.herokuapp.com/doc/erd.pdf">online-shop-ecommerce-put.herokuapp.com/doc/erd.pdf</a></p>
+<hr>
+
+<p>generating documentation <code>  yardoc --private &#39;lib/*<strong>/</strong>.rb&#39; &#39;app/controllers/*.rb&#39; &#39;app/models/*.rb&#39; - README </code> decumentation path <code> /doc/index.html </code> erd <code> /doc/erd.pdf </code></p>
 </div></div>
 
       <div id="footer">
-  Generated on Mon May 18 20:06:49 2020 by
+  Generated on Mon May 18 20:12:11 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>

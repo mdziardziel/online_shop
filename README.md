@@ -1,7 +1,5 @@
 # README
 
-```
-
 ## Link do aplikacji
 https://online-shop-ecommerce-put.herokuapp.com
 
