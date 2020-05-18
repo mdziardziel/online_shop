@@ -160,7 +160,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>requires products in request body.</p>
+<p>pobiera parametry zapytania.</p>
 </div></span>
   
 </li>
@@ -184,7 +184,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>sets order by token.</p>
+<p>ustawia zamówienie po tokenie.</p>
 </div></span>
   
 </li>
@@ -232,7 +232,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>reduce the quantity of products by number of ordered products.</p>
+<p>redukuje liczbę produktów.</p>
 </div></span>
   
 </li>
@@ -251,7 +251,7 @@
   
   
   <h3 class="inherited">Methods inherited from <span class='object_link'><a href="ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#back_to_cart-instance_method" title="ApplicationController#back_to_cart (method)">#back_to_cart</a></span>, <span class='object_link'><a href="ApplicationController.html#basic_auth_disabled-instance_method" title="ApplicationController#basic_auth_disabled (method)">#basic_auth_disabled</a></span>, <span class='object_link'><a href="ApplicationController.html#categories-instance_method" title="ApplicationController#categories (method)">#categories</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="ApplicationController.html#basic_auth_disabled-instance_method" title="ApplicationController#basic_auth_disabled (method)">#basic_auth_disabled</a></span>, <span class='object_link'><a href="ApplicationController.html#categories-instance_method" title="ApplicationController#categories (method)">#categories</a></span></p>
 
   
 
@@ -273,13 +273,11 @@
     
 <p>POST /orders</p>
 
-<p>creates new join records between order and products</p>
+<p>tworzy zamówenie</p>
 
-<p>reduces products quantity</p>
+<p>redukuje liczbę produktów o zamówione produkty</p>
 
-<p>resets cart</p>
-
-<p>saves last_order_token cookie needed for redirection after payu payment</p>
+<p>resetuje koszyk</p>
 
 
   </div>
@@ -293,6 +291,8 @@
       <pre class="lines">
 
 
+15
+16
 17
 18
 19
@@ -319,13 +319,10 @@
 40
 41
 42
-43
-44
-45
-46</pre>
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_products'>products</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Product.html" title="Product (class)">Product</a></span></span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='id identifier rubyid_order_params'>order_params</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='rparen'>)</span>
@@ -351,7 +348,6 @@
 
   <span class='kw'>if</span> <span class='id identifier rubyid_result'>result</span>
     <span class='id identifier rubyid_cookies'>cookies</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>cart</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
-    <span class='id identifier rubyid_cookies'>cookies</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>last_order_token</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span><span class='comma'>,</span> <span class='label'>path:</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
     <span class='id identifier rubyid_redirect_to'>redirect_to</span> <span class='id identifier rubyid_order_path'>order_path</span><span class='lparen'>(</span><span class='label'>id:</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
   <span class='kw'>else</span>
     <span class='id identifier rubyid_flash'>flash</span><span class='lbracket'>[</span><span class='symbol'>:error</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_errors'>errors</span><span class='period'>.</span><span class='id identifier rubyid_full_messages'>full_messages</span>
@@ -374,7 +370,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>requires products in request body</p>
+<p>pobiera parametry zapytania</p>
 
 
   </div>
@@ -388,12 +384,12 @@
       <pre class="lines">
 
 
-55
-56
-57</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_order_params'>order_params</span>
   <span class='id identifier rubyid_params'>params</span><span class='period'>.</span><span class='id identifier rubyid_require'>require</span><span class='lparen'>(</span><span class='symbol'>:products</span><span class='rparen'>)</span>
@@ -415,7 +411,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>sets order by token</p>
+<p>ustawia zamówienie po tokenie</p>
 
 
   </div>
@@ -429,12 +425,12 @@
       <pre class="lines">
 
 
-50
-51
-52</pre>
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_order'>set_order</span>
   <span class='ivar'>@order</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Order.html" title="Order (class)">Order</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>token:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -495,7 +491,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>reduce the quantity of products by number of ordered products</p>
+<p>redukuje liczbę produktów</p>
 
 
   </div>
@@ -509,16 +505,16 @@
       <pre class="lines">
 
 
+57
+58
+59
 60
 61
 62
-63
-64
-65
-66</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/orders_controller.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update_products_quantity'>update_products_quantity</span>
   <span class='ivar'>@order</span><span class='period'>.</span><span class='id identifier rubyid_products_orders'>products_orders</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_po'>po</span><span class='op'>|</span>
@@ -537,7 +533,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri May  1 23:11:28 2020 by
+  Generated on Mon May 18 20:01:47 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.18 (ruby-2.6.1).
 </div>
