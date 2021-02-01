@@ -68,7 +68,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem 'active_material'
-gem 'bootstrap',     '4.1.1'
+gem 'bootstrap',     '4.3.1'
 gem 'material-sass', '4.1.1'
 gem 'material_icons'
 gem 'attr_extras', '~> 6.2', '>= 6.2.3'
