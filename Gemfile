@@ -74,6 +74,6 @@ gem 'material_icons'
 gem 'attr_extras', '~> 6.2', '>= 6.2.3'
 gem 'cookies_eu'
 #documentation
-gem 'rdoc', '~> 6.2', '>= 6.2.1'
+gem 'rdoc', '~> 6.3'
 gem 'yard'
 gem 'rails-erd', group: :development
